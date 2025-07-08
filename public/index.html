@@ -579,34 +579,60 @@
         .show-english .japanese-name {
             display: inline;
         }
-        
-        /* Flag banner styles */
-        .flag-banner {
-            background-color: #f8f9fa;
-            padding: 5px 0;
-            text-align: center;
-        }
-        
-        .flag-container {
-            display: inline-flex;
-            gap: 30px;
-            padding: 10px 30px;
-            background-color: white;
-            border-radius: 0 0 10px 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        .flag {
-            height: 40px;
-            width: auto;
-            border: 1px solid #ddd;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .flag:hover {
-            transform: scale(1.05);
-        }
+.flag-banner {
+    background-color: var(--dark);
+    padding: 5px 0;
+    color: white;
+}
+
+.flag-banner-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.flag-contact-info {
+    font-size: 0.8rem;
+    white-space: nowrap;
+    color: white;
+}
+
+.flag-container {
+    display: inline-flex;
+    gap: 10px;
+    padding: 3px 10px;
+    background-color: white;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+}
+
+.flag {
+    height: 20px;
+    width: auto;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .flag-banner {
+        padding: 3px 0;
+    }
+    
+    .flag-contact-info {
+        font-size: 0.7rem;
+    }
+    
+    .flag-container {
+        gap: 8px;
+        padding: 2px 8px;
+    }
+    
+    .flag {
+        height: 15px;
+    }
+}
+
         
         /* Map container styles */
         .map-container {
@@ -842,11 +868,23 @@
     
     <header>
         <div class="flag-banner">
+    <div class="container">
+        <div class="flag-banner-content">
+            <div class="flag-contact-info">
+                <span class="japanese">📞 080-9816-3546</span>
+                <span class="english">📞 080-9816-3546</span>
+            </div>
             <div class="flag-container">
                 <img src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg" alt="UK Flag" class="flag">
                 <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" alt="US Flag" class="flag">
             </div>
+            <div class="flag-contact-info">
+                <span class="japanese">🏠 寝屋川市萱島東</span>
+                <span class="english">🏠 Kayashima-Higashi</span>
+            </div>
         </div>
+    </div>
+</div>
         <div class="container header-content">
             <div class="logo">
                 <span class="japanese">チャターボックスハウス <span class="english-name">(Chatterbox House)</span></span>
