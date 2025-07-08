@@ -882,6 +882,91 @@ nav ul li {
     transform: scale(1.02);
     position: relative;
 }
+/* Carousel Styles */
+.hero-carousel {
+    height: 60vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    background-blend-mode: overlay;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.carousel-slide.active {
+    opacity: 1;
+}
+
+.carousel-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    opacity: 0.7;
+    mix-blend-mode: multiply;
+}
+
+/* Hero Content Styles - Matching Original */
+.hero-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content .container {
+    max-width: 1200px;
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    .hero-content p {
+        font-size: 1rem;
+    }
+}
     </style>
 </head>
 <body>
@@ -934,18 +1019,30 @@ nav ul li {
 </div>
     </header>
 
-    <div class="hero" id="home" style="background: linear-gradient(135deg, var(--primary), var(--accent)), 
-                url('/images/shop.jpg') no-repeat center top/cover;">
+   <!-- Static Hero Content with Rotating Background -->
+<section class="hero-carousel" id="home">
+    <!-- All background slides (no content inside these) -->
+    <div class="carousel-slide active" style="background-image: url('images/shop.jpg')"></div>
+    <div class="carousel-slide" style="background-image: url('images/ghiblishop.jpg')"></div>
+    <div class="carousel-slide" style="background-image: url('images/tonyteacher.jpg')"></div>
+    <div class="carousel-slide" style="background-image: url('images/toddlers.jpg')"></div>
+    <div class="carousel-slide" style="background-image: url('images/adultclass.jpg')"></div>
+    <div class="carousel-slide" style="background-image: url('images/tony.jpg')"></div>
+    
+    <!-- Static Content (always visible) - Matching original styling -->
     <div class="hero-content">
-        <h1 class="japanese">英会話を楽しもう！</h1>
-        <h1 class="english">Enjoy English Conversation!</h1>
-        <p class="japanese">寝屋川市萱島東のアットホームな英会話スクール。少人数制で楽しく学べます。</p>
-        <p class="english">A cozy English conversation school in Kayashima-Higashi, Neyagawa. Learn in small, friendly classes.</p>
-        <a href="#contact" class="btn japanese">無料体験レッスン</a>
-        <a href="#contact" class="btn english">Free Trial Lesson</a>
+        <div class="container">
+            <h1 class="japanese">英会話を楽しもう！</h1>
+            <h1 class="english">Enjoy English Conversation!</h1>
+            <p class="japanese">寝屋川市萱島東のアットホームな英会話スクール。少人数制で楽しく学べます。</p>
+            <p class="english">A cozy English conversation school in Kayashima-Higashi, Neyagawa. Learn in small, friendly classes.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn japanese">無料体験レッスン</a>
+                <a href="#contact" class="btn english">Free Trial Lesson</a>
+            </div>
+        </div>
     </div>
-</div>
-    </section>
+</section>
 
     <section id="about">
         <div class="container">
@@ -1594,6 +1691,25 @@ document.querySelectorAll('form').forEach(form => {
         }
     });
 }); 
+// Simple Image Carousel
+document.addEventListener('DOMContentLoaded', function() {
+    const slides = document.querySelectorAll('.carousel-slide');
+    let currentIndex = 0;
+    
+    function rotateSlides() {
+        // Hide current slide
+        slides[currentIndex].classList.remove('active');
+        
+        // Move to next slide
+        currentIndex = (currentIndex + 1) % slides.length;
+        
+        // Show new slide
+        slides[currentIndex].classList.add('active');
+    }
+    
+    // Rotate every 5 seconds (5000ms = 5s)
+    setInterval(rotateSlides, 5000);
+});
     </script>
 </body>
 </html>
