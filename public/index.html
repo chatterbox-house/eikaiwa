@@ -837,7 +837,7 @@
 </div>
 
 <div class="floating-contact-btn" id="floatingContactBtn">
-    <i class="fas fa-comment-dots"></i>
+    ✉️
 </div>
     
     <header>
@@ -1015,8 +1015,7 @@
             </ul>
             <div class="price japanese">¥4,000<span> (税抜/1回)</span></div>
             <div class="price english">¥4,000<span> (excl. tax/session)</span></div>
-            <p class="japanese small">*月謝制ではなく1回ごとのお支払い</p>
-            <p class="english small">*Pay-per-session (no monthly commitment)</p>
+        
         </div>
     </div>
 </div>
@@ -1104,16 +1103,18 @@
                             <label for="name" class="english">Name</label>
                             <input type="text" id="name" name="name" required>
                         </div>
-                        <div class="form-group">
-                            <label for="email" class="japanese">メールアドレス</label>
-                            <label for="email" class="english">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone" class="japanese">電話番号</label>
-                            <label for="phone" class="english">Phone Number</label>
-                            <input type="tel" id="phone" name="phone">
-                        </div>
+                       <div class="form-group">
+    <label for="email" class="japanese">メールアドレス</label>
+    <label for="email" class="english">Email</label>
+    <input type="email" id="email" name="email" oninput="checkContactInfo()">
+</div>
+<div class="form-group">
+    <label for="phone" class="japanese">電話番号</label>
+    <label for="phone" class="english">Phone Number</label>
+    <input type="tel" id="phone" name="phone" oninput="checkContactInfo()">
+</div>
+<p id="contactError" style="color: red; display: none;" class="japanese">メールアドレスか電話番号のいずれかを入力してください</p>
+<p id="contactError" style="color: red; display: none;" class="english">Please provide either email or phone number</p>
                         <div class="form-group">
                             <label for="interest" class="japanese">興味のあるクラス</label>
                             <label for="interest" class="english">Class of Interest</label>
@@ -1343,6 +1344,29 @@
             element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(element);
         });
+// Contact info validation
+function checkContactInfo() {
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    const errorMessages = document.querySelectorAll('#contactError');
+    
+    if (!email && !phone) {
+        errorMessages.forEach(msg => msg.style.display = 'block');
+        return false;
+    } else {
+        errorMessages.forEach(msg => msg.style.display = 'none');
+        return true;
+    }
+}
+
+// Update form submit handlers
+document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', function(e) {
+        if (!checkContactInfo()) {
+            e.preventDefault();
+        }
+    });
+});
     </script>
 </body>
 </html>
