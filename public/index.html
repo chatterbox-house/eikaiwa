@@ -650,6 +650,41 @@ nav ul li {
         margin-bottom: 5px;
     }
 }
+@media (max-width: 768px) {
+    .hero-content {
+        padding: 0 10px;
+    }
+@media (max-width: 768px) {
+    .hero-content h1 {
+        margin-bottom: 0.5rem;
+    }
+    .hero-content h1.japanese {
+        font-size: 1.3rem;
+        letter-spacing: -0.5px;
+    }
+    .hero-content p.japanese {
+        font-size: 0.8rem;
+        line-height: 1.4;
+    }
+    .hero-buttons .btn.japanese {
+        font-size: 0.8rem;
+        padding: 0.6rem 0.8rem;
+    }
+}
+    .hero-content p {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+    .hero-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .hero-buttons .btn {
+        width: 100%;
+        max-width: 220px;
+        margin: 0 auto;
+    }
+}
         
         /* Map container styles */
         .map-container {
@@ -769,7 +804,35 @@ nav ul li {
     90% { opacity: 1; }
     100% { opacity: 0; }
 }
-        
+     /* Teacher Carousel Styles */
+.teacher-carousel {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.teacher-carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.teacher-carousel-slide.active {
+    opacity: 1;
+}
+
+.teacher-carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}   
         /* Animation */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -987,10 +1050,13 @@ nav ul li {
 <div class="flag-banner">
     <div class="container">
         <div class="flag-banner-content">
-            <div class="contact-item phone">
-                <span class="japanese">📞 080-9816-3546</span>
-                <span class="english">📞 080-9816-3546</span>
-            </div>
+            <div class="contact-item phone" style="background: linear-gradient(45deg, var(--secondary), #FF8A00); padding: 12px 20px; border-radius: 30px; animation: pulse 1.5s infinite;">
+    <a href="tel:08098163546" style="color: white; text-decoration: none; font-weight: bold; font-size: 1.3rem; display: flex; align-items: center;">
+        <span style="font-size: 1.5em; margin-right: 10px;">📞</span>
+        <span class="japanese">今すぐ電話: <strong>080-9816-3546</strong></span>
+        <span class="english">Call Now: <strong>080-9816-3546</strong></span>
+    </a>
+</div>
             <div class="flag-container">
                 <img src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg" alt="UK Flag" class="flag">
                 <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" alt="US Flag" class="flag">
@@ -1021,27 +1087,37 @@ nav ul li {
 
    <!-- Static Hero Content with Rotating Background -->
 <section class="hero-carousel" id="home">
-    <!-- All background slides (no content inside these) -->
+    <!-- Only shop and ghiblishop images -->
     <div class="carousel-slide active" style="background-image: url('images/shop.jpg')"></div>
+ <div class="carousel-slide" style="background-image: url('images/toddlers.jpg')"></div>
     <div class="carousel-slide" style="background-image: url('images/ghiblishop.jpg')"></div>
-    <div class="carousel-slide" style="background-image: url('images/tonyteacher.jpg')"></div>
-    <div class="carousel-slide" style="background-image: url('images/toddlers.jpg')"></div>
-    <div class="carousel-slide" style="background-image: url('images/adultclass.jpg')"></div>
-    <div class="carousel-slide" style="background-image: url('images/tony.jpg')"></div>
     
     <!-- Static Content (always visible) - Matching original styling -->
-    <div class="hero-content">
-        <div class="container">
-            <h1 class="japanese">英会話を楽しもう！</h1>
-            <h1 class="english">Enjoy English Conversation!</h1>
-            <p class="japanese">寝屋川市萱島東のアットホームな英会話スクール。少人数制で楽しく学べます。</p>
-            <p class="english">A cozy English conversation school in Kayashima-Higashi, Neyagawa. Learn in small, friendly classes.</p>
-            <div class="hero-buttons">
-                <a href="#contact" class="btn japanese">無料体験レッスン</a>
-                <a href="#contact" class="btn english">Free Trial Lesson</a>
+<div class="hero-content">
+    <div class="container">
+        <h1 class="japanese" style="line-height: 1.2; font-size: clamp(1.2rem, 4vw, 2rem); word-break: keep-all; overflow-wrap: anywhere;">
+    <span style="display: inline-block; width: 100%;">今なら</span>
+    <span style="display: inline-block; width: 100%; color: var(--yellow);">無料体験レッスン</span>
+    <span style="display: inline-block; width: 100%;">実施中！</span>
+</h1>
+        <h1 class="english" style="line-height: 1.3; font-size: clamp(1.5rem, 5vw, 2.5rem);"><span style="color: var(--yellow);">FREE Trial Lesson</span><br>Available Now!</h1>
+        <p class="japanese" style="font-size: clamp(0.9rem, 3vw, 1.2rem);">寝屋川市で最もアットホームな英会話スクール！<br>3月限定: 先着数名様のみ受付中</p>
+        <p class="english" style="font-size: clamp(0.9rem, 3vw, 1.2rem);">The coziest English school in Neyagawa!<br>August Special: Limited availability</p>
+        <div class="hero-buttons" style="flex-direction: column; align-items: center; gap: 10px; margin: 1rem 0;">
+            <div style="display: flex; gap: 10px; width: 100%; justify-content: center;">
+                <a href="tel:08098163546" class="btn japanese" style="background: var(--yellow); color: var(--dark); box-shadow: 0 4px 0 #d4a500; font-size: clamp(0.9rem, 3vw, 1rem); padding: 0.8rem 1rem; white-space: nowrap;">📞 今すぐ電話</a>
+                <a href="tel:08098163546" class="btn english" style="background: var(--yellow); color: var(--dark); box-shadow: 0 4px 0 #d4a500; font-size: clamp(0.9rem, 3vw, 1rem); padding: 0.8rem 1rem; white-space: nowrap;">📞 Call Now</a>
+            </div>
+            <div style="display: flex; gap: 10px; width: 100%; justify-content: center;">
+                <a href="#contact" class="btn japanese" style="font-size: clamp(0.9rem, 3vw, 1rem); padding: 0.8rem 1rem; white-space: nowrap;">✉️ メールで問い合わせ</a>
+                <a href="#contact" class="btn english" style="font-size: clamp(0.9rem, 3vw, 1rem); padding: 0.8rem 1rem; white-space: nowrap;">✉️ Email Inquiry</a>
             </div>
         </div>
+        <p class="japanese" style="margin-top: 10px; font-size: clamp(0.7rem, 2.5vw, 0.9rem); background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 5px; display: inline-block;">営業時間: 火～金 13:00-20:00 / 土 9:00-15:00</p>
+        <p class="english" style="margin-top: 10px; font-size: clamp(0.7rem, 2.5vw, 0.9rem); background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 5px; display: inline-block;">Open: Tue-Fri 1pm-8pm / Sat 9am-3pm</p>
     </div>
+</div>
+</div>
 </section>
 
     <section id="about">
@@ -1060,8 +1136,18 @@ nav ul li {
                     <p class="english">All teachers are native speakers (British), supported by our Japanese manager Minako.</p>
                 </div>
                 <div class="about-image fade-in delay-1">
-                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="English class">
-                </div>
+    <div class="teacher-carousel">
+        <div class="teacher-carousel-slide active">
+            <img src="images/minako.jpg" alt="Minako">
+        </div>
+        <div class="teacher-carousel-slide">
+            <img src="images/tonyteacher.jpg" alt="Tony">
+        </div>
+        <div class="teacher-carousel-slide">
+            <img src="images/jay.jpg" alt="Jay">
+        </div>
+    </div>
+</div>
             </div>
         </div>
     </section>
@@ -1353,8 +1439,18 @@ nav ul li {
                             <textarea id="message" name="message" required></textarea>
                         </div>
                         <div data-netlify-recaptcha="true"></div>
-                        <button type="submit" class="btn japanese">送信</button>
-                        <button type="submit" class="btn english">Submit</button>
+                        <div style="background: rgba(255,200,0,0.1); padding: 1rem; border-radius: 10px; border: 2px dashed var(--yellow); margin-bottom: 1rem; text-align: center;">
+    <p class="japanese" style="color: var(--secondary); font-weight: bold; margin-bottom: 0.5rem;">8月限定: 人気の時間帯はすぐに埋まります</p>
+<p class="english" style="color: var(--secondary); font-weight: bold; margin-bottom: 0.5rem;">August Special: Places are limited, especially at popular times</p>
+</div>
+<button type="submit" class="btn japanese" style="background: linear-gradient(45deg, var(--secondary), #FF2B4A); width: 100%; padding: 1.2rem; font-size: 1.3em; font-weight: bold; animation: pulse 1.5s infinite;">
+    <span style="font-size:1.5em;">👉</span> 今すぐ無料体験を予約する
+</button>
+<button type="submit" class="btn english" style="background: linear-gradient(45deg, var(--secondary), #FF2B4A); width: 100%; padding: 1.2rem; font-size: 1.3em; font-weight: bold; animation: pulse 1.5s infinite;">
+    <span style="font-size:1.5em;">👉</span> Book Free Trial Now
+</button>
+<p class="japanese" style="text-align: center; margin-top: 1rem; font-size: 0.9rem;">またはお電話で: <a href="tel:08098163546" style="color: var(--secondary); font-weight: bold; text-decoration: underline;">080-9816-3546</a></p>
+<p class="english" style="text-align: center; margin-top: 1rem; font-size: 0.9rem;">Or call: <a href="tel:08098163546" style="color: var(--secondary); font-weight: bold; text-decoration: underline;">080-9816-3546</a></p>>
                     </form>
                 </div>
             </div>
@@ -1511,7 +1607,53 @@ const nav = document.querySelector('nav ul');
 hamburger.addEventListener('click', () => {
     nav.classList.toggle('show');
 });
+// Carousel functionality
+let currentSlide = 0;
+const slides = document.querySelectorAll('.carousel-slide');
+const slideCount = slides.length;
 
+function showSlide(index) {
+    slides.forEach(slide => slide.classList.remove('active'));
+    slides[index].classList.add('active');
+}
+
+function nextSlide() {
+    currentSlide = (currentSlide + 1) % slideCount;
+    showSlide(currentSlide);
+}
+
+// Teacher Carousel functionality
+let currentTeacherSlide = 0;
+const teacherSlides = document.querySelectorAll('.teacher-carousel-slide');
+const teacherSlideCount = teacherSlides.length;
+
+function showTeacherSlide(index) {
+    teacherSlides.forEach(slide => slide.classList.remove('active'));
+    teacherSlides[index].classList.add('active');
+}
+
+function nextTeacherSlide() {
+    currentTeacherSlide = (currentTeacherSlide + 1) % teacherSlideCount;
+    showTeacherSlide(currentTeacherSlide);
+}
+
+// Set up both carousels
+let carouselInterval = setInterval(nextSlide, 5000);
+setInterval(nextTeacherSlide, 2000);
+
+// Pause main carousel on hover
+const heroCarousel = document.querySelector('.hero-carousel');
+heroCarousel.addEventListener('mouseenter', () => {
+    clearInterval(carouselInterval);
+});
+
+heroCarousel.addEventListener('mouseleave', () => {
+    carouselInterval = setInterval(nextSlide, 5000);
+});
+
+// Initialize both carousels
+showSlide(0);
+showTeacherSlide(0);
 // Language switcher
 const languageBtn = document.getElementById('languageBtn');
 const body = document.body;
@@ -1535,7 +1677,43 @@ function updateBanners() {
         banner.classList.remove('active');
     });
 }
+// Track phone clicks
+document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+    link.addEventListener('click', function() {
+        // This would be replaced with your actual analytics code
+        console.log('Phone number clicked: ' + this.getAttribute('href'));
+        // Example: Facebook Pixel event
+        if(typeof fbq !== 'undefined') {
+            fbq('track', 'Contact');
+        }
+    });
+});
 
+// Form validation
+function checkContactInfo() {
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    const errorElements = document.querySelectorAll('#contactError');
+    
+    if (!email && !phone) {
+        errorElements.forEach(el => el.style.display = 'block');
+    } else {
+        errorElements.forEach(el => el.style.display = 'none');
+    }
+}
+
+// Form submission tracking
+document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', function() {
+        console.log('Form submitted: ' + this.getAttribute('name'));
+        // Example: Google Analytics event
+        if(typeof gtag !== 'undefined') {
+            gtag('event', 'form_submission', {
+                'form_name': this.getAttribute('name')
+            });
+        }
+    });
+});
     </script>
 </body>
 </html>
