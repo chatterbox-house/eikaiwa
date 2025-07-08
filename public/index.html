@@ -6,12 +6,13 @@
     <title>Chatterbox House - English Conversation School in Neyagawa</title>
     <style>
         :root {
-            --primary: #4a6fa5;
-            --secondary: #ff7e5f;
-            --light: #f8f9fa;
-            --dark: #343a40;
-            --accent: #ffc107;
-        }
+    --primary: #58A700; /* Duolingo green */
+    --secondary: #FF2B4A; /* Duolingo red */
+    --light: #F8F8F8;
+    --dark: #2D2D2D;
+    --accent: #1CB0F6; /* Duolingo blue */
+    --yellow: #FFC800; /* Duolingo yellow */
+}
         
         * {
             margin: 0;
@@ -87,14 +88,16 @@
         }
         
         .hero {
-            background: url('https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
-            height: 60vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            color: white;
-            text-align: center;
-        }
+    background: linear-gradient(135deg, var(--primary), var(--accent)), 
+                url('https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    color: white;
+    text-align: center;
+    background-blend-mode: overlay;
+}
         
         .hero::before {
             content: '';
@@ -126,24 +129,32 @@
             margin-right: auto;
         }
         
-        .btn {
-            display: inline-block;
-            background: var(--secondary);
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border: none;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .btn:hover {
-            background: #ff6a45;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
+.btn {
+    display: inline-block;
+    background: var(--secondary);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 15px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 0 rgba(210, 50, 70, 0.8);
+    position: relative;
+    top: 0;
+}
+
+.btn:hover {
+    background: #FF1A3D;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 rgba(210, 50, 70, 0.8);
+}
+
+.btn:active {
+    top: 3px;
+    box-shadow: 0 1px 0 rgba(210, 50, 70, 0.8);
+}
         
         section {
             padding: 4rem 0;
@@ -559,26 +570,82 @@
             margin-bottom: 1rem;
         }
         
-        /* Floating contact button */
-        .floating-contact-btn {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            background: var(--secondary);
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            z-index: 99;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            animation: pulse 2s infinite;
-        }
+/* Floating buttons */
+.floating-contact-btn {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    background: var(--secondary);
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    z-index: 99;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: pulse 2s infinite;
+}
+
+.floating-call-btn {
+    position: fixed;
+    bottom: 110px;
+    left: 30px;
+    background: #4CAF50;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    z-index: 99;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+    0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(76, 175, 80, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
+}
+
+.call-banner {
+    display: none;
+    position: fixed;
+    bottom: 110px;
+    left: 100px;
+    background: white;
+    color: var(--dark);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    z-index: 98;
+    white-space: nowrap;
+}
+
+.call-banner:after {
+    content: '';
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    margin-top: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent white transparent transparent;
+}
+
+.floating-call-btn:hover + .call-banner,
+.call-banner:hover {
+    display: block;
+}
         
         .floating-contact-btn:hover {
             transform: scale(1.1);
@@ -689,10 +756,16 @@
     </style>
 </head>
 <body>
-    <!-- Floating contact button -->
-    <div class="floating-contact-btn" id="floatingContactBtn">
-        <i class="fas fa-comment-dots"></i>
-    </div>
+    <!-- Floating buttons -->
+<div class="floating-call-btn" id="floatingCallBtn" onclick="window.location.href='tel:08098163546'">
+    📞
+    <div class="call-banner japanese">日本語でお問い合わせ<br>080-9816-3546</div>
+    <div class="call-banner english">Call us in Japanese<br>080-9816-3546</div>
+</div>
+
+<div class="floating-contact-btn" id="floatingContactBtn">
+    <i class="fas fa-comment-dots"></i>
+</div>
     
     <header>
         <div class="flag-banner">
