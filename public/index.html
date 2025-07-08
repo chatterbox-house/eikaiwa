@@ -232,12 +232,73 @@
             box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         }
         
-        .class-card-header {
-            background: var(--primary);
-            color: white;
-            padding: 1.5rem;
-            text-align: center;
-        }
+/* Class category colors */
+.kids-class .class-card-header {
+    background: #58A700; /* Duolingo green */
+}
+
+.adult-class .class-card-header {
+    background: #1CB0F6; /* Duolingo blue */
+}
+
+.private-class .class-card-header {
+    background: #FFC800; /* Duolingo yellow */
+    color: var(--dark); /* Dark text for better contrast */
+}
+
+.special-class .class-card-header {
+    background: #FF2B4A; /* Duolingo red */
+    position: relative;
+}
+
+.special-class {
+    border: 2px solid #FF2B4A;
+    transform: scale(1.02);
+}
+
+.special-badge {
+    position: absolute;
+    top: -12px;
+    right: 20px;
+    background: #FF2B4A;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16);
+    z-index: 1;
+    border: 2px solid white;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.special-class {
+    border: 2px solid #FF2B4A;
+    margin-top: 15px; /* Give space for badge */
+    margin-bottom: 15px;
+}
+
+.special-class .class-card-header {
+    padding-top: 20px; /* Extra space for badge */
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.special-class .class-card-header {
+    padding-top: 25px; /* Extra space for badge */
+}
+
+.class-card-header {
+    padding: 1.5rem;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: visible;
+}
         
         .class-card-body {
             padding: 1.5rem;
@@ -753,6 +814,18 @@
                 margin-bottom: 0.8rem;
             }
         }
+.section-subtitle {
+    font-size: 1rem;
+    color: var(--dark);
+    opacity: 0.8;
+    display: block;
+    margin-top: 5px;
+}
+.special-class {
+    border: 3px solid #FF2B4A;
+    transform: scale(1.02);
+    position: relative;
+}
     </style>
 </head>
 <body>
@@ -831,101 +904,133 @@
                 <h2 class="japanese">クラスと料金</h2>
                 <h2 class="english">Classes & Pricing</h2>
             </div>
-            <div class="class-cards">
-                <div class="class-card fade-in">
-                    <div class="class-card-header">
-                        <h3 class="japanese">プライベートレッスン</h3>
-                        <h3 class="english">Private Lesson</h3>
-                    </div>
-                    <div class="class-card-body">
-                        <ul>
-                            <li class="japanese">定員: 1名</li>
-                            <li class="english">Capacity: 1 person</li>
-                            <li class="japanese">授業時間: 45分</li>
-                            <li class="english">Lesson time: 45 minutes</li>
-                            <li class="japanese">すべてのレベル対応</li>
-                            <li class="english">All levels welcome</li>
-                        </ul>
-                        <div class="price japanese">¥12,000<span> (税抜)</span></div>
-                        <div class="price english">¥12,000<span> (excl. tax)</span></div>
-                        <p class="japanese small">*月4回 (48回/年)</p>
-                        <p class="english small">*4 times/month (48 times/year)</p>
-                    </div>
-                </div>
-                
-                <div class="class-card fade-in delay-1">
-                    <div class="class-card-header">
-                        <h3 class="japanese">大人グループ</h3>
-                        <h3 class="english">Adult Group</h3>
-                    </div>
-                    <div class="class-card-body">
-                        <ul>
-                            <li class="japanese">定員: 4名</li>
-                            <li class="english">Capacity: 4 people</li>
-                            <li class="japanese">授業時間: 50分</li>
-                            <li class="english">Lesson time: 50 minutes</li>
-                            <li class="japanese">レベル: 1-4</li>
-                            <li class="english">Levels: 1-4</li>
-                        </ul>
-                        <div class="price japanese">¥8,500<span> (税抜)</span></div>
-                        <div class="price english">¥8,500<span> (excl. tax)</span></div>
-                        <p class="japanese small">*月4回 (48回/年)</p>
-                        <p class="english small">*4 times/month (48 times/year)</p>
-                    </div>
-                </div>
-                
-                <div class="class-card fade-in delay-2">
-                    <div class="class-card-header">
-                        <h3 class="japanese">学生グループ</h3>
-                        <h3 class="english">Student Group</h3>
-                    </div>
-                    <div class="class-card-body">
-                        <ul>
-                            <li class="japanese">定員: 4名</li>
-                            <li class="english">Capacity: 4 people</li>
-                            <li class="japanese">授業時間: 50分</li>
-                            <li class="english">Lesson time: 50 minutes</li>
-                            <li class="japanese">レベル: 1-6</li>
-                            <li class="english">Levels: 1-6</li>
-                        </ul>
-                        <div class="price japanese">¥6,500<span> (税抜)</span></div>
-                        <div class="price english">¥6,500<span> (excl. tax)</span></div>
-                        <p class="japanese small">*月4回 (48回/年)</p>
-                        <p class="english small">*4 times/month (48 times/year)</p>
-                    </div>
-                </div>
-                
-                <div class="class-card fade-in delay-3">
-                    <div class="class-card-header">
-                        <h3 class="japanese">4-6歳</h3>
-                        <h3 class="english">4-6 Years Old</h3>
-                    </div>
-                    <div class="class-card-body">
-                        <ul>
-                            <li class="japanese">定員: 4名</li>
-                            <li class="english">Capacity: 4 people</li>
-                            <li class="japanese">授業時間: 40分</li>
-                            <li class="english">Lesson time: 40 minutes</li>
-                            <li class="japanese">レベル: 1 (フォニックス中心)</li>
-                            <li class="english">Level: 1 (Phonics focus)</li>
-                        </ul>
-                        <div class="price japanese">¥5,200<span> (税抜)</span></div>
-                        <div class="price english">¥5,200<span> (excl. tax)</span></div>
-                        <p class="japanese small">*月4回 (48回/年)</p>
-                        <p class="english small">*4 times/month (48 times/year)</p>
-                    </div>
-                </div>
-            </div>
+<div class="class-cards">
+    <!-- Kids Group Classes -->
+    <div class="class-card fade-in kids-class">
+        <div class="class-card-header">
+            <h3 class="japanese">4-6歳</h3>
+            <h3 class="english">4-6 Years Old</h3>
         </div>
+        <div class="class-card-body">
+            <ul>
+                <li class="japanese">定員: 4名</li>
+                <li class="english">Capacity: 4 people</li>
+                <li class="japanese">授業時間: 40分</li>
+                <li class="english">Lesson time: 40 minutes</li>
+                <li class="japanese">レベル: 1 (フォニックス中心)</li>
+                <li class="english">Level: 1 (Phonics focus)</li>
+            </ul>
+            <div class="price japanese">¥5,200<span> (税抜)</span></div>
+            <div class="price english">¥5,200<span> (excl. tax)</span></div>
+            <p class="japanese small">*月4回 (48回/年)</p>
+            <p class="english small">*4 times/month (48 times/year)</p>
+        </div>
+    </div>
+
+    <div class="class-card fade-in delay-1 kids-class">
+        <div class="class-card-header">
+            <h3 class="japanese">小学生グループ</h3>
+            <h3 class="english">Elementary Group</h3>
+        </div>
+        <div class="class-card-body">
+            <ul>
+                <li class="japanese">定員: 4名</li>
+                <li class="english">Capacity: 4 people</li>
+                <li class="japanese">授業時間: 50分</li>
+                <li class="english">Lesson time: 50 minutes</li>
+                <li class="japanese">レベル: 1-6</li>
+                <li class="english">Levels: 1-6</li>
+            </ul>
+            <div class="price japanese">¥6,500<span> (税抜)</span></div>
+            <div class="price english">¥6,500<span> (excl. tax)</span></div>
+            <p class="japanese small">*月4回 (48回/年)</p>
+            <p class="english small">*4 times/month (48 times/year)</p>
+        </div>
+    </div>
+
+    <!-- Adult Group Classes -->
+    <div class="class-card fade-in delay-1 adult-class">
+        <div class="class-card-header">
+            <h3 class="japanese">大人グループ</h3>
+            <h3 class="english">Adult Group</h3>
+        </div>
+        <div class="class-card-body">
+            <ul>
+                <li class="japanese">定員: 4名</li>
+                <li class="english">Capacity: 4 people</li>
+                <li class="japanese">授業時間: 50分</li>
+                <li class="english">Lesson time: 50 minutes</li>
+                <li class="japanese">レベル: 1-4</li>
+                <li class="english">Levels: 1-4</li>
+            </ul>
+            <div class="price japanese">¥8,500<span> (税抜)</span></div>
+            <div class="price english">¥8,500<span> (excl. tax)</span></div>
+            <p class="japanese small">*月4回 (48回/年)</p>
+            <p class="english small">*4 times/month (48 times/year)</p>
+        </div>
+    </div>
+
+    <!-- Private Classes -->
+    <div class="class-card fade-in private-class">
+        <div class="class-card-header">
+            <h3 class="japanese">プライベートレッスン</h3>
+            <h3 class="english">Private Lesson</h3>
+        </div>
+        <div class="class-card-body">
+            <ul>
+                <li class="japanese">定員: 1名</li>
+                <li class="english">Capacity: 1 person</li>
+                <li class="japanese">授業時間: 45分</li>
+                <li class="english">Lesson time: 45 minutes</li>
+                <li class="japanese">すべてのレベル対応</li>
+                <li class="english">All levels welcome</li>
+            </ul>
+            <div class="price japanese">¥12,000<span> (税抜)</span></div>
+            <div class="price english">¥12,000<span> (excl. tax)</span></div>
+            <p class="japanese small">*月4回 (48回/年)</p>
+            <p class="english small">*4 times/month (48 times/year)</p>
+        </div>
+    </div>
+
+    <!-- Special Evening Class -->
+    <div class="class-card fade-in delay-3 special-class">
+    <div class="class-card-header">
+        <div class="special-badge japanese">大人気!</div>
+        <div class="special-badge english">Very Popular!</div>
+        <h3 class="japanese">特別夜間クラス (中高生)</h3>
+        <h3 class="english">Special Evening Class (12+)</h3>
+    </div>
+        <div class="class-card-body">
+            <ul>
+                <li class="japanese">定員: 6名</li>
+                <li class="english">Capacity: 6 people</li>
+                <li class="japanese">授業時間: 45分</li>
+                <li class="english">Lesson time: 45 minutes</li>
+                <li class="japanese">時間: 午後7時～</li>
+                <li class="english">Time: 7pm~</li>
+                <li class="japanese">学校の英語を補完 - 会話とリスニング中心</li>
+                <li class="english">Complements school English - Focus on speaking/listening</li>
+                <li class="japanese">通常の学生グループよりお得</li>
+                <li class="english">Better value than regular student group</li>
+            </ul>
+            <div class="price japanese">¥4,000<span> (税抜/1回)</span></div>
+            <div class="price english">¥4,000<span> (excl. tax/session)</span></div>
+            <p class="japanese small">*月謝制ではなく1回ごとのお支払い</p>
+            <p class="english small">*Pay-per-session (no monthly commitment)</p>
+        </div>
+    </div>
+</div>
+
+            
     </section>
 
     <section id="teachers">
-        <div class="container">
-            <div class="section-title">
-                <h2 class="japanese">講師紹介</h2>
-                <h2 class="english">Our Teachers</h2>
-            </div>
-            <div class="teacher-cards">
+    <div class="container">
+        <div class="section-title">
+            <h2 class="japanese">講師紹介</h2>
+            <h2 class="english">Our Teachers</h2>
+        </div>
+        <div class="teacher-cards">
                 <div class="teacher-card fade-in">
                     <div class="teacher-image">
                         <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Tony">
