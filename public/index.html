@@ -717,11 +717,9 @@
     100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
 }
 
-.call-banner {
+.call-banner, .contact-banner {
     display: none;
     position: fixed;
-    bottom: 110px;
-    left: 100px;
     background: white;
     color: var(--dark);
     padding: 15px;
@@ -729,9 +727,44 @@
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     z-index: 98;
     white-space: nowrap;
+    line-height: 1.5;
 }
 
-.call-banner:after {
+/* Japanese banners initially visible */
+.japanese .call-banner.japanese,
+.japanese .contact-banner.japanese {
+    display: block;
+}
+
+/* English banners initially hidden */
+.japanese .call-banner.english,
+.japanese .contact-banner.english {
+    display: none;
+}
+
+/* When English is shown */
+.show-english .call-banner.english,
+.show-english .contact-banner.english {
+    display: block;
+}
+
+/* When English is shown, hide Japanese */
+.show-english .call-banner.japanese,
+.show-english .contact-banner.japanese {
+    display: none;
+}
+
+.call-banner {
+    bottom: 110px;
+    left: 100px;
+}
+
+.contact-banner {
+    bottom: 30px;
+    left: 100px;
+}
+
+.call-banner:after, .contact-banner:after {
     content: '';
     position: absolute;
     right: 100%;
@@ -741,22 +774,35 @@
     border-style: solid;
     border-color: transparent white transparent transparent;
 }
-
-.floating-call-btn:hover + .call-banner,
+/* Hover behavior - only show the appropriate language banner */
+.floating-call-btn:hover + .call-banner.japanese:not(.english),
+.japanese .floating-call-btn:hover + .call-banner.japanese,
+.floating-call-btn:hover + .call-banner.english,
+.show-english .floating-call-btn:hover + .call-banner.english,
 .call-banner:hover {
     display: block;
 }
-        
-        .floating-contact-btn:hover {
-            transform: scale(1.1);
-            background: #ff5252;
-        }
-        
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(255,107,107,0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(255,107,107,0); }
-            100% { box-shadow: 0 0 0 0 rgba(255,107,107,0); }
-        }
+
+.floating-contact-btn:hover + .contact-banner.japanese:not(.english),
+.japanese .floating-contact-btn:hover + .contact-banner.japanese,
+.floating-contact-btn:hover + .contact-banner.english,
+.show-english .floating-contact-btn:hover + .contact-banner.english,
+.contact-banner:hover {
+    display: block;
+}
+
+.floating-call-btn:hover + .call-banner,
+.call-banner:hover,
+.floating-contact-btn:hover + .contact-banner,
+.contact-banner:hover {
+    display: block;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255,107,107,0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(255,107,107,0); }
+    100% { box-shadow: 0 0 0 0 rgba(255,107,107,0); }
+}
         
         /* Animation */
         @keyframes fadeIn {
@@ -868,15 +914,17 @@
     </style>
 </head>
 <body>
-    <!-- Floating buttons -->
+<!-- Floating buttons -->
 <div class="floating-call-btn" id="floatingCallBtn" onclick="window.location.href='tel:08098163546'">
     📞
-    <div class="call-banner japanese">日本語でお問い合わせ<br>080-9816-3546</div>
-    <div class="call-banner english">Call us in Japanese<br>080-9816-3546</div>
+    <div class="call-banner japanese">日本語でお問い合わせ<br>080-9816-3546<br>火～土 13:00-20:00</div>
+    <div class="call-banner english">Call us in Japanese<br>080-9816-3546<br>Tue-Sat 1pm-8pm</div>
 </div>
 
 <div class="floating-contact-btn" id="floatingContactBtn">
     ✉️
+    <div class="contact-banner japanese">メールで問い合わせ<br>24時間受付</div>
+    <div class="contact-banner english">Email us<br>24/7 reception</div>
 </div>
     
     <header>
@@ -1397,18 +1445,40 @@
             nav.classList.toggle('show');
         });
         
-        // Language switcher
-        const languageBtn = document.getElementById('languageBtn');
-        const body = document.body;
-        
-        languageBtn.addEventListener('click', () => {
-            body.classList.toggle('show-english');
-            if (body.classList.contains('show-english')) {
-                languageBtn.textContent = '日本語';
-            } else {
-                languageBtn.textContent = 'EN';
-            }
+// Language switcher
+const languageBtn = document.getElementById('languageBtn');
+const body = document.body;
+
+// Set initial state based on body class
+updateBanners();
+
+languageBtn.addEventListener('click', () => {
+    body.classList.toggle('show-english');
+    updateBanners();
+    if (body.classList.contains('show-english')) {
+        languageBtn.textContent = '日本語';
+    } else {
+        languageBtn.textContent = 'EN';
+    }
+});
+
+function updateBanners() {
+    // Hide all banners first
+    document.querySelectorAll('.call-banner, .contact-banner').forEach(banner => {
+        banner.style.display = 'none';
+    });
+    
+    // Show the appropriate ones
+    if (body.classList.contains('show-english')) {
+        document.querySelectorAll('.call-banner.english, .contact-banner.english').forEach(banner => {
+            banner.style.display = 'block';
         });
+    } else {
+        document.querySelectorAll('.call-banner.japanese, .contact-banner.japanese').forEach(banner => {
+            banner.style.display = 'block';
+        });
+    }
+}
         
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
