@@ -568,9 +568,41 @@
   left: -9999px;
   opacity: 0;
 }
+        .floating-contact-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: var(--secondary);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 99;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        .floating-contact-btn:hover {
+            transform: scale(1.1);
+            background: #ff5252;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255,107,107,0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(255,107,107,0); }
+            100% { box-shadow: 0 0 0 0 rgba(255,107,107,0); }
+        }
     </style>
 </head>
 <body>
+    <!-- Floating contact button -->
+    <div class="floating-contact-btn" id="floatingContactBtn">
+        <i class="fas fa-comment-dots"></i>
+    </div>
     <header>
         <div class="container header-content">
             <div class="logo">
@@ -871,13 +903,114 @@
                 <p class="english">© 2023 Chatterbox House. All rights reserved.</p>
             </div>
         </div>
-    </footer>
+        </footer>
+
+    <!-- Contact Form Popup -->
+    <div class="contact-popup" id="contactPopup">
+        <div class="popup-content">
+            <span class="close-popup" id="closePopup">&times;</span>
+            <h3 class="japanese">無料体験レッスン</h3>
+            <h3 class="english">Free Trial Lesson</h3>
+            <form name="popup-contact" method="POST" netlify netlify-honeypot="bot-field">
+                <input type="hidden" name="form-name" value="popup-contact">
+                <p class="hidden">
+                    <label>Don't fill this out: <input name="bot-field"></label>
+                </p>
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="お名前 / Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="メールアドレス / Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" name="phone" placeholder="電話番号 / Phone (optional)">
+                </div>
+                <button type="submit" class="btn japanese">送信</button>
+                <button type="submit" class="btn english">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Popup styles -->
+    <style>
+        .contact-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 999;
+            align-items: center;
+            justify-content: center;
+        }
+        .popup-content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            animation: popIn 0.4s ease-out;
+        }
+        @keyframes popIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .close-popup {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--dark);
+        }
+        .popup-content h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        .popup-content .form-group {
+            margin-bottom: 15px;
+        }
+        .popup-content input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+    </style>
 
     <div class="language-switcher">
         <button class="language-btn" id="languageBtn">EN/日本語</button>
     </div>
 
     <script>
+        // Contact popup functionality
+        const floatingBtn = document.getElementById('floatingContactBtn');
+        const contactPopup = document.getElementById('contactPopup');
+        const closePopup = document.getElementById('closePopup');
+        
+        floatingBtn.addEventListener('click', () => {
+            contactPopup.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closePopup.addEventListener('click', () => {
+            contactPopup.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Close popup when clicking outside
+        contactPopup.addEventListener('click', (e) => {
+            if (e.target === contactPopup) {
+                contactPopup.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
         // Mobile menu toggle
         const hamburger = document.querySelector('.hamburger');
         const nav = document.querySelector('nav ul');
