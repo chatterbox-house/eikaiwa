@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatterbox House - English Conversation School in Neyagawa</title>
-    <style>
-        :root {
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=IM+Fell+English&display=swap');
+    
+    :root {
     --primary: #58A700; /* Duolingo green */
     --secondary: #FF2B4A; /* Duolingo red */
     --light: #F8F8F8;
     --dark: #2D2D2D;
     --accent: #1CB0F6; /* Duolingo blue */
     --yellow: #FFC800; /* Duolingo yellow */
-}
-        
+}      
         * {
             margin: 0;
             padding: 0;
@@ -41,19 +42,31 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Keep these visibility toggles */
+.japanese .english {
+    display: none !important;
+}
+
+.english .japanese {
+    display: none !important;
+}
         
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-        }
+.logo {
+    font-size: 2.5rem;
+    font-weight: bold;
+    font-family: 'IM Fell English', serif; /* This is a similar archaic font 
+*/
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: white;
+}
         
         .logo span {
             font-size: 1rem;
@@ -879,28 +892,27 @@
                 <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" alt="US Flag" class="flag">
             </div>
             <div class="flag-contact-info">
-                <span class="japanese">🏠 寝屋川市萱島東</span>
-                <span class="english">🏠 Kayashima-Higashi</span>
+                <span class="japanese">🏠 〒572-0824 大阪府寝屋川市萱島東二丁目7-12</span>
+                <span class="english">🏠 2 Chome-7-12 Kayashimahigashi, Neyagawa, Osaka 572-0824</span>
             </div>
         </div>
     </div>
 </div>
-        <div class="container header-content">
-            <div class="logo">
-                <span class="japanese">チャターボックスハウス <span class="english-name">(Chatterbox House)</span></span>
-                <span class="english">Chatterbox House <span class="japanese-name">(チャターボックスハウス)</span></span>
-            </div>
-            <button class="hamburger">☰</button>
-            <nav>
-                <ul>
-                    <li><a href="#home" class="japanese">ホーム</a><a href="#home" class="english">Home</a></li>
-                    <li><a href="#about" class="japanese">私たちについて</a><a href="#about" class="english">About</a></li>
-                    <li><a href="#classes" class="japanese">クラス</a><a href="#classes" class="english">Classes</a></li>
-                    <li><a href="#teachers" class="japanese">講師</a><a href="#teachers" class="english">Teachers</a></li>
-                    <li><a href="#contact" class="japanese">お問い合わせ</a><a href="#contact" class="english">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
+<div class="container header-content">
+    <div class="logo">
+        CHATTERBOX HOUSE
+    </div>
+    <button class="hamburger">☰</button>
+    <nav>
+        <ul>
+            <li><a href="#home" class="japanese">ホーム</a><a href="#home" class="english">Home</a></li>
+            <li><a href="#about" class="japanese">私たちについて</a><a href="#about" class="english">About</a></li>
+            <li><a href="#classes" class="japanese">クラス</a><a href="#classes" class="english">Classes</a></li>
+            <li><a href="#teachers" class="japanese">講師</a><a href="#teachers" class="english">Teachers</a></li>
+            <li><a href="#contact" class="japanese">お問い合わせ</a><a href="#contact" class="english">Contact</a></li>
+        </ul>
+    </nav>
+</div>
     </header>
 
     <section class="hero" id="home">
