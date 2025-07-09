@@ -4,22 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatterbox House - English Conversation School in Neyagawa</title>
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=IM+Fell+English&display=swap');
-    
-    :root {
-    --primary: #58A700; /* Duolingo green */
-    --secondary: #FF2B4A; /* Duolingo red */
-    --light: #F8F8F8;
-    --dark: #2D2D2D;
-    --accent: #1CB0F6; /* Duolingo blue */
-    --yellow: #FFC800; /* Duolingo yellow */
-}      
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=IM+Fell+English&display=swap');
+        
+        :root {
+            --primary: #58A700; /* Duolingo green */
+            --secondary: #FF2B4A; /* Duolingo red */
+            --light: #F8F8F8;
+            --dark: #2D2D2D;
+            --accent: #1CB0F6; /* Duolingo blue */
+            --yellow: #FFC800; /* Duolingo yellow */
+        }      
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            word-break: normal;
+            overflow-wrap: break-word;
         }
         
         body {
@@ -42,42 +45,43 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
-.header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 0;
-    flex-wrap: wrap;
-    gap: 20px;
-}
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
 
-.logo {
-    font-size: 2.2rem;
-    font-weight: bold;
-    font-family: 'IM Fell English', serif;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: white;
-    line-height: 1;
-    padding: 5px 0;
-}
+        .logo {
+            font-size: 2.2rem;
+            font-weight: bold;
+            font-family: 'IM Fell English', serif;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: white;
+            line-height: 1;
+            padding: 5px 0;
+        }
 
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-}
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
 
-nav ul li {
-    margin: 0;
-}
+        nav ul li {
+            margin: 0;
+        }
         
         nav ul li a {
             color: white;
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
+            white-space: nowrap;
         }
         
         nav ul li a:hover {
@@ -90,74 +94,109 @@ nav ul li {
             font-size: 1.5rem;
         }
         
-        .hero {
-    background: linear-gradient(135deg, var(--primary), var(--accent)), 
-                url('https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
-    height: 60vh;
-    display: flex;
-    align-items: center;
-    position: relative;
-    color: white;
-    text-align: center;
-    background-blend-mode: overlay;
-}
-        
-        .hero::before {
+        /* Hero Carousel Styles */
+        .hero-carousel {
+            height: 60vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-blend-mode: overlay;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+        }
+
+        .carousel-slide::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.5);
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            opacity: 0.7;
+            mix-blend-mode: multiply;
         }
-        
+
+        /* Hero Content Styles */
         .hero-content {
             position: relative;
-            z-index: 1;
+            z-index: 2;
+            color: white;
+            text-align: center;
             width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content .container {
+            max-width: 1200px;
             padding: 0 20px;
         }
-        
-        .hero h1 {
+
+        .hero-content h1 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
         }
-        
-        .hero p {
+
+        .hero-content p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
-        
-.btn {
-    display: inline-block;
-    background: var(--secondary);
-    color: white;
-    padding: 0.8rem 1.5rem;
-    border: none;
-    border-radius: 15px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    box-shadow: 0 4px 0 rgba(210, 50, 70, 0.8);
-    position: relative;
-    top: 0;
-}
 
-.btn:hover {
-    background: #FF1A3D;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 0 rgba(210, 50, 70, 0.8);
-}
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
 
-.btn:active {
-    top: 3px;
-    box-shadow: 0 1px 0 rgba(210, 50, 70, 0.8);
-}
+        .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 15px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 0 rgba(210, 50, 70, 0.8);
+            position: relative;
+            top: 0;
+        }
+
+        .btn:hover {
+            background: #FF1A3D;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 rgba(210, 50, 70, 0.8);
+        }
+
+        .btn:active {
+            top: 3px;
+            box-shadow: 0 1px 0 rgba(210, 50, 70, 0.8);
+        }
         
         section {
             padding: 4rem 0;
@@ -235,73 +274,73 @@ nav ul li {
             box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         }
         
-/* Class category colors */
-.kids-class .class-card-header {
-    background: #58A700; /* Duolingo green */
-}
+        /* Class category colors */
+        .kids-class .class-card-header {
+            background: #58A700; /* Duolingo green */
+        }
 
-.adult-class .class-card-header {
-    background: #1CB0F6; /* Duolingo blue */
-}
+        .adult-class .class-card-header {
+            background: #1CB0F6; /* Duolingo blue */
+        }
 
-.private-class .class-card-header {
-    background: #FFC800; /* Duolingo yellow */
-    color: var(--dark); /* Dark text for better contrast */
-}
+        .private-class .class-card-header {
+            background: #FFC800; /* Duolingo yellow */
+            color: var(--dark); /* Dark text for better contrast */
+        }
 
-.special-class .class-card-header {
-    background: #FF2B4A; /* Duolingo red */
-    position: relative;
-}
+        .special-class .class-card-header {
+            background: #FF2B4A; /* Duolingo red */
+            position: relative;
+        }
 
-.special-class {
-    border: 2px solid #FF2B4A;
-    transform: scale(1.02);
-}
+        .special-class {
+            border: 2px solid #FF2B4A;
+            transform: scale(1.02);
+        }
 
-.special-badge {
-    position: absolute;
-    top: -12px;
-    right: 20px;
-    background: #FF2B4A;
-    color: white;
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: bold;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16);
-    z-index: 1;
-    border: 2px solid white;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
-}
+        .special-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: #FF2B4A;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.16);
+            z-index: 1;
+            border: 2px solid white;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
 
-.special-class {
-    border: 2px solid #FF2B4A;
-    margin-top: 15px; /* Give space for badge */
-    margin-bottom: 15px;
-}
+        .special-class {
+            border: 2px solid #FF2B4A;
+            margin-top: 15px; /* Give space for badge */
+            margin-bottom: 15px;
+        }
 
-.special-class .class-card-header {
-    padding-top: 20px; /* Extra space for badge */
-}
+        .special-class .class-card-header {
+            padding-top: 20px; /* Extra space for badge */
+        }
 
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-}
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
 
-.special-class .class-card-header {
-    padding-top: 25px; /* Extra space for badge */
-}
+        .special-class .class-card-header {
+            padding-top: 25px; /* Extra space for badge */
+        }
 
-.class-card-header {
-    padding: 1.5rem;
-    text-align: center;
-    color: white;
-    position: relative;
-    overflow: visible;
-}
+        .class-card-header {
+            padding: 1.5rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: visible;
+        }
         
         .class-card-body {
             padding: 1.5rem;
@@ -553,29 +592,27 @@ nav ul li {
             transform: scale(1.1);
         }
         
-/* Language Switching - PROPER WORKING VERSION */
-/* Language Switching - SIMPLIFIED WORKING VERSION */
-/* Default state - Japanese visible */
-.japanese {
-    display: block;
-}
-.english {
-    display: none;
-}
+        /* Language Switching */
+        .japanese {
+            display: block;
+        }
+        .english {
+            display: none;
+        }
 
-/* English state - English visible */
-body.show-english .english {
-    display: block;
-}
-body.show-english .japanese {
-    display: none;
-}
+        /* English state - English visible */
+        body.show-english .english {
+            display: block;
+        }
+        body.show-english .japanese {
+            display: none;
+        }
 
-/* Force all elements to respect these rules */
-body.show-english .japanese,
-body:not(.show-english) .english {
-    display: none !important;
-}
+        /* Force all elements to respect these rules */
+        body.show-english .japanese,
+        body:not(.show-english) .english {
+            display: none !important;
+        }
         
         /* Logo bilingual styles */
         .logo .english-name,
@@ -593,110 +630,56 @@ body:not(.show-english) .english {
         .show-english .japanese-name {
             display: inline;
         }
-.flag-banner {
-    background-color: var(--dark);
-    padding: 8px 0;
-    color: white;
-    font-size: 0.9rem;
-}
 
-.flag-banner-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
-}
+        .flag-banner {
+            background-color: var(--dark);
+            padding: 8px 0;
+            color: white;
+            font-size: 0.9rem;
+        }
 
-.contact-item {
-    display: flex;
-    align-items: center;
-    padding: 5px 10px;
-    flex: 1;
-    min-width: 200px;
-}
+        .flag-banner-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
 
-.contact-item.phone {
-    justify-content: flex-start;
-    text-align: left;
-}
+        .contact-item {
+            display: flex;
+            align-items: center;
+            padding: 5px 10px;
+            flex: 1;
+            min-width: 200px;
+        }
 
-.contact-item.address {
-    justify-content: flex-end;
-    text-align: right;
-}
+        .contact-item.phone {
+            justify-content: flex-start;
+            text-align: left;
+        }
 
-.flag-container {
-    display: inline-flex;
-    gap: 10px;
-    padding: 5px 15px;
-    background-color: white;
-    border-radius: 0 0 8px 8px;
-    box-shadow: 0 1px 5px rgba(0,0,0,0.1);
-    margin: 0 auto;
-}
+        .contact-item.address {
+            justify-content: flex-end;
+            text-align: right;
+        }
 
-.flag {
-    height: 20px;
-    width: auto;
-    object-fit: contain;
-}
+        .flag-container {
+            display: inline-flex;
+            gap: 10px;
+            padding: 5px 15px;
+            background-color: white;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+            margin: 0 auto;
+        }
 
-/* Mobile styles */
-@media (max-width: 768px) {
-    .flag-banner-content {
-        flex-direction: column;
-        gap: 8px;
-    }
-    
-    .contact-item {
-        justify-content: center !important;
-        text-align: center !important;
-        min-width: 100%;
-        padding: 3px 0;
-    }
-    
-    .flag-container {
-        order: -1; /* Move flags to top on mobile */
-        margin-bottom: 5px;
-    }
-}
-@media (max-width: 768px) {
-    .hero-content {
-        padding: 0 10px;
-    }
-@media (max-width: 768px) {
-    .hero-content h1 {
-        margin-bottom: 0.5rem;
-    }
-    .hero-content h1.japanese {
-        font-size: 1.3rem;
-        letter-spacing: -0.5px;
-    }
-    .hero-content p.japanese {
-        font-size: 0.8rem;
-        line-height: 1.4;
-    }
-    .hero-buttons .btn.japanese {
-        font-size: 0.8rem;
-        padding: 0.6rem 0.8rem;
-    }
-}
-    .hero-content p {
-        font-size: 0.9rem;
-        margin-bottom: 1rem;
-    }
-    .hero-buttons {
-        flex-direction: column;
-        gap: 10px;
-    }
-    .hero-buttons .btn {
-        width: 100%;
-        max-width: 220px;
-        margin: 0 auto;
-    }
-}
-        
+        .flag {
+            height: 20px;
+            width: auto;
+            object-fit: contain;
+        }
+
         /* Map container styles */
         .map-container {
             margin: 20px 0;
@@ -720,130 +703,132 @@ body:not(.show-english) .english {
             margin-bottom: 1rem;
         }
         
-/* Floating buttons */
-.floating-contact-btn {
-    position: fixed;
-    bottom: 30px;
-    left: 30px;
-    background: var(--secondary);
-    color: white;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    z-index: 99;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    animation: pulse 2s infinite;
-}
+        /* Floating buttons */
+        .floating-contact-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: var(--secondary);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 99;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
 
-.floating-call-btn {
-    position: fixed;
-    bottom: 110px;
-    left: 30px;
-    background: #4CAF50;
-    color: white;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    z-index: 99;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    animation: pulse-green 2s infinite;
-}
+        .floating-call-btn {
+            position: fixed;
+            bottom: 110px;
+            left: 30px;
+            background: #4CAF50;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 99;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: pulse-green 2s infinite;
+        }
 
-@keyframes pulse-green {
-    0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7); }
-    70% { box-shadow: 0 0 0 15px rgba(76, 175, 80, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
-}
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(76, 175, 80, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
+        }
 
-.call-banner, .contact-banner {
-    display: none;
-    position: fixed;
-    background: white;
-    color: var(--dark);
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    z-index: 98;
-    white-space: nowrap;
-    line-height: 1.5;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
+        .call-banner, .contact-banner {
+            display: none;
+            position: fixed;
+            background: white;
+            color: var(--dark);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 98;
+            white-space: nowrap;
+            line-height: 1.5;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
 
-.call-banner.active, 
-.contact-banner.active {
-    display: block;
-    opacity: 1;
-    animation: fadeOut 5s forwards;
-}
+        .call-banner.active, 
+        .contact-banner.active {
+            display: block;
+            opacity: 1;
+            animation: fadeOut 5s forwards;
+        }
 
-.call-banner {
-    bottom: 110px;
-    left: 100px;
-}
+        .call-banner {
+            bottom: 110px;
+            left: 100px;
+        }
 
-.contact-banner {
-    bottom: 30px;
-    left: 100px;
-}
+        .contact-banner {
+            bottom: 30px;
+            left: 100px;
+        }
 
-.call-banner:after, .contact-banner:after {
-    content: '';
-    position: absolute;
-    right: 100%;
-    top: 50%;
-    margin-top: -10px;
-    border-width: 10px;
-    border-style: solid;
-    border-color: transparent white transparent transparent;
-}
+        .call-banner:after, .contact-banner:after {
+            content: '';
+            position: absolute;
+            right: 100%;
+            top: 50%;
+            margin-top: -10px;
+            border-width: 10px;
+            border-style: solid;
+            border-color: transparent white transparent transparent;
+        }
 
-@keyframes fadeOut {
-    0% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { opacity: 0; }
-}
-     /* Teacher Carousel Styles */
-.teacher-carousel {
-    position: relative;
-    width: 100%;
-    height: 300px;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+        
+        /* Teacher Carousel Styles */
+        .teacher-carousel {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
 
-.teacher-carousel-slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-}
+        .teacher-carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
 
-.teacher-carousel-slide.active {
-    opacity: 1;
-}
+        .teacher-carousel-slide.active {
+            opacity: 1;
+        }
 
-.teacher-carousel-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}   
+        .teacher-carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }   
+        
         /* Animation */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -865,6 +850,64 @@ body:not(.show-english) .english {
             opacity: 0;
         }
         
+        .section-subtitle {
+            font-size: 1rem;
+            color: var(--dark);
+            opacity: 0.8;
+            display: block;
+            margin-top: 5px;
+        }
+        
+        /* Popup styles */
+        .contact-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 999;
+            align-items: center;
+            justify-content: center;
+        }
+        .popup-content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            animation: popIn 0.4s ease-out;
+        }
+        @keyframes popIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .close-popup {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--dark);
+        }
+        .popup-content h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        .popup-content .form-group {
+            margin-bottom: 15px;
+        }
+        .popup-content input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
         /* Mobile styles */
         @media (max-width: 768px) {
             .header-content {
@@ -893,11 +936,11 @@ body:not(.show-english) .english {
                 right: 1rem;
             }
             
-            .hero {
+            .hero-carousel {
                 height: 50vh;
             }
             
-            .hero h1 {
+            .hero-content h1 {
                 font-size: 2rem;
             }
             
@@ -938,197 +981,144 @@ body:not(.show-english) .english {
             .contact-info > * {
                 margin-bottom: 0.8rem;
             }
+            
+            .flag-banner-content {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .contact-item {
+                justify-content: center !important;
+                text-align: center !important;
+                min-width: 100%;
+                padding: 3px 0;
+            }
+            
+            .flag-container {
+                order: -1; /* Move flags to top on mobile */
+                margin-bottom: 5px;
+            }
+            
+            .hero-content h1.japanese {
+                font-size: 1.3rem;
+                letter-spacing: -0.5px;
+            }
+            .hero-content p.japanese {
+                font-size: 0.8rem;
+                line-height: 1.4;
+            }
+            .hero-buttons .btn.japanese {
+                font-size: 0.8rem;
+                padding: 0.6rem 0.8rem;
+            }
+            
+            .hero-content p {
+                font-size: 0.9rem;
+                margin-bottom: 1rem;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .hero-buttons .btn {
+                width: 100%;
+                max-width: 220px;
+                margin: 0 auto;
+            }
         }
-@media (min-width: 769px) {
-    .hero {
-        background-position: center top !important;
-    }
-}
-.section-subtitle {
-    font-size: 1rem;
-    color: var(--dark);
-    opacity: 0.8;
-    display: block;
-    margin-top: 5px;
-}
-.special-class {
-    border: 3px solid #FF2B4A;
-    transform: scale(1.02);
-    position: relative;
-}
-/* Carousel Styles */
-.hero-carousel {
-    height: 60vh;
-    position: relative;
-    overflow: hidden;
-}
-
-.carousel-slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-    background-blend-mode: overlay;
-    background-color: rgba(0,0,0,0.5);
-}
-
-.carousel-slide.active {
-    opacity: 1;
-}
-
-.carousel-slide::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-    opacity: 0.7;
-    mix-blend-mode: multiply;
-}
-
-/* Hero Content Styles - Matching Original */
-.hero-content {
-    position: relative;
-    z-index: 2;
-    color: white;
-    text-align: center;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.hero-content .container {
-    max-width: 1200px;
-    padding: 0 20px;
-}
-
-.hero-content h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-}
-
-.hero-content p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-}
-
-.hero-buttons {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-@media (max-width: 768px) {
-    .hero-content h1 {
-        font-size: 2rem;
-    }
-    .hero-content p {
-        font-size: 1rem;
-    }
-}
+        
+        @media (min-width: 769px) {
+            .hero-carousel {
+                background-position: center top !important;
+            }
+        }
     </style>
 </head>
 <body>
-<!-- Floating buttons -->
-<div class="floating-call-btn" id="floatingCallBtn">
-    <a href="tel:08098163546" style="color: white; text-decoration: none;">📞</a>
-    <div class="call-banner japanese">日本語でお問い合わせ<br>080-9816-3546<br>火～土 13:00-20:00</div>
-    <div class="call-banner english">Call us in Japanese<br>080-9816-3546<br>Tue-Sat 1pm-8pm</div>
-</div>
+    <!-- Floating buttons -->
+    <div class="floating-call-btn" id="floatingCallBtn">
+        <a href="tel:08098163546" style="color: white; text-decoration: none;">📞</a>
+        <div class="call-banner japanese">日本語でお問い合わせ<br>080-9816-3546<br>火～土 13:00-20:00</div>
+        <div class="call-banner english">Call us in Japanese<br>080-9816-3546<br>Tue-Sat 1pm-8pm</div>
+    </div>
 
-<div class="floating-contact-btn" id="floatingContactBtn">
-    ✉️
-    <div class="contact-banner japanese">メールで問い合わせ<br>24時間受付</div>
-    <div class="contact-banner english">Email us<br>24/7 reception</div>
-</div>
+    <div class="floating-contact-btn" id="floatingContactBtn">
+        ✉️
+        <div class="contact-banner japanese">メールで問い合わせ<br>24時間受付</div>
+        <div class="contact-banner english">Email us<br>24/7 reception</div>
+    </div>
     
     <header>
-<div class="flag-banner">
-    <div class="container">
-        <div class="flag-banner-content">
-            <div class="contact-item phone" style="background: linear-gradient(45deg, var(--secondary), #FF8A00); padding: 12px 20px; border-radius: 30px; animation: pulse 1.5s infinite;">
-    <a href="tel:08098163546" style="color: white; text-decoration: none; font-weight: bold; font-size: 1.3rem; display: flex; align-items: center;">
-        <span style="font-size: 1.5em; margin-right: 10px;">📞</span>
-        <span class="japanese">今すぐ電話: <strong>080-9816-3546</strong></span>
-        <span class="english">Call Now: <strong>080-9816-3546</strong></span>
-    </a>
-</div>
-            <div class="flag-container">
-                <img src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg" alt="UK Flag" class="flag">
-                <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" alt="US Flag" class="flag">
-            </div>
-            <div class="contact-item address">
-                <span class="japanese">🏠 〒572-0824 大阪府寝屋川市萱島東二丁目7-12</span>
-                <span class="english">🏠 2 Chome-7-12 Kayashimahigashi, Neyagawa, Osaka 572-0824</span>
+        <div class="flag-banner">
+            <div class="container">
+                <div class="flag-banner-content">
+                    <div class="contact-item phone" style="background: linear-gradient(45deg, var(--secondary), #FF8A00); padding: 12px 20px; border-radius: 30px; animation: pulse 1.5s infinite;">
+                        <a href="tel:08098163546" style="color: white; text-decoration: none; font-weight: bold; font-size: 1.3rem; display: flex; align-items: center;">
+                            <span style="font-size: 1.5em; margin-right: 10px;">📞</span>
+                            <span class="japanese">今すぐ電話: <strong>080-9816-3546</strong></span>
+                            <span class="english">Call Now: <strong>080-9816-3546</strong></span>
+                        </a>
+                    </div>
+                    <div class="flag-container">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg" alt="UK Flag" class="flag">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" alt="US Flag" class="flag">
+                    </div>
+                    <div class="contact-item address">
+                        <span class="japanese">🏠 〒572-0824 大阪府寝屋川市萱島東二丁目7-12</span>
+                        <span class="english">🏠 2 Chome-7-12 Kayashimahigashi, Neyagawa, Osaka 572-0824</span>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-<div class="container header-content">
-    <div class="logo">
-        CHATTERBOX HOUSE
-    </div>
-    <button class="hamburger">☰</button>
-    <nav>
-        <ul>
-            <li><a href="#home" class="japanese">ホーム</a><a href="#home" class="english">Home</a></li>
-            <li><a href="#about" class="japanese">私たちについて</a><a href="#about" class="english">About</a></li>
-            <li><a href="#classes" class="japanese">クラス</a><a href="#classes" class="english">Classes</a></li>
-            <li><a href="#teachers" class="japanese">講師</a><a href="#teachers" class="english">Teachers</a></li>
-            <li><a href="#contact" class="japanese">お問い合わせ</a><a href="#contact" class="english">Contact</a></li>
-        </ul>
-    </nav>
-</div>
+        <div class="container header-content">
+            <div class="logo">
+                CHATTERBOX HOUSE
+            </div>
+            <button class="hamburger">☰</button>
+            <nav>
+                <ul>
+                    <li><a href="#home" class="japanese">ホーム</a><a href="#home" class="english">Home</a></li>
+                    <li><a href="#about" class="japanese">私たちについて</a><a href="#about" class="english">About</a></li>
+                    <li><a href="#classes" class="japanese">クラス</a><a href="#classes" class="english">Classes</a></li>
+                    <li><a href="#teachers" class="japanese">講師</a><a href="#teachers" class="english">Teachers</a></li>
+                    <li><a href="#contact" class="japanese">お問い合わせ</a><a href="#contact" class="english">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-   <!-- Static Hero Content with Rotating Background -->
-<section class="hero-carousel" id="home">
-    <!-- Only shop and ghiblishop images -->
-    <div class="carousel-slide active" style="background-image: url('images/shop.jpg')"></div>
- <div class="carousel-slide" style="background-image: url('images/toddlers.jpg')"></div>
-    <div class="carousel-slide" style="background-image: url('images/ghiblishop.jpg')"></div>
-    
-    <!-- Static Content (always visible) - Matching original styling -->
-<div class="hero-content">
-    <div class="container">
-        <h1 class="japanese" style="line-height: 1.2; font-size: clamp(1.8rem, 6vw, 3rem); word-break: keep-all; overflow-wrap: break-word; padding: 0 10px; text-align: center;">
-    <span style="display: block; color: var(--yellow);">無料体験レッスン</span>
-    <span style="display: block;">実施中！</span>
-</h1>
-        <h1 class="english" style="line-height: 1.3; font-size: clamp(1.5rem, 5vw, 2.5rem);"><span style="color: var(--yellow);">FREE Trial Lesson</span><br>Available Now!</h1>
-        <p class="japanese" style="font-size: clamp(0.9rem, 3vw, 1.2rem);">寝屋川市で最もアットホームな英会話スクール！<br>8月限定: 先着数名様のみ受付中</p>
-        <p class="english" style="font-size: clamp(0.9rem, 3vw, 1.2rem);">The coziest English school in Neyagawa!<br>August Special: Limited availability</p>
-        <div class="hero-buttons" style="flex-direction: column; align-items: center; gap: 10px; margin: 1rem 0;">
-            <div style="display: flex; gap: 10px; width: 100%; justify-content: center;">
-                <a href="tel:08098163546" class="btn japanese" style="background: var(--yellow); color: var(--dark); box-shadow: 0 4px 0 #d4a500; font-size: clamp(0.9rem, 3vw, 1rem); padding: 0.8rem 1rem; white-space: nowrap;">📞 今すぐ電話</a>
-                <a href="tel:08098163546" class="btn english" style="background: var(--yellow); color: var(--dark); box-shadow: 0 4px 0 #d4a500; font-size: clamp(0.9rem, 3vw, 1rem); padding: 0.8rem 1rem; white-space: nowrap;">📞 Call Now</a>
-            </div>
-            <div style="display: flex; gap: 10px; width: 100%; justify-content: center;">
-                <a href="#contact" class="btn japanese" style="font-size: clamp(0.9rem, 3vw, 1rem); padding: 0.8rem 1rem; white-space: nowrap;">✉️ メールで問い合わせ</a>
-                <a href="#contact" class="btn english" style="font-size: clamp(0.9rem, 3vw, 1rem); padding: 0.8rem 1rem; white-space: nowrap;">✉️ Email Inquiry</a>
+    <!-- Static Hero Content with Rotating Background -->
+    <section class="hero-carousel" id="home">
+        <!-- Only shop and ghiblishop images -->
+        <div class="carousel-slide active" style="background-image: url('images/shop.jpg')"></div>
+        <div class="carousel-slide" style="background-image: url('images/toddlers.jpg')"></div>
+        <div class="carousel-slide" style="background-image: url('images/ghiblishop.jpg')"></div>
+        
+        <!-- Static Content (always visible) - Matching original styling -->
+        <div class="hero-content">
+            <div class="container">
+                <h1 class="japanese" style="line-height: 1.2; font-size: clamp(1.8rem, 6vw, 3rem); word-break: keep-all; overflow-wrap: break-word; padding: 0 10px; text-align: center;">
+                    <span style="display: block; color: var(--yellow);">無料体験レッスン</span>
+                    <span style="display: block;">実施中！</span>
+                </h1>
+                <h1 class="english" style="line-height: 1.3; font-size: clamp(1.5rem, 5vw, 2.5rem);"><span style="color: var(--yellow);">FREE Trial Lesson</span><br>Available Now!</h1>
+                <p class="japanese" style="font-size: clamp(0.9rem, 3vw, 1.2rem);">寝屋川市で最もアットホームな英会話スクール！<br>8月限定: 先着数名様のみ受付中</p>
+                <p class="english" style="font-size: clamp(0.9rem, 3vw, 1.2rem);">The coziest English school in Neyagawa!<br>August Special: Limited availability</p>
+                <div class="hero-buttons" style="flex-direction: column; align-items: center; gap: 10px; margin: 1rem 0;">
+                    <div style="display: flex; gap: 10px; width: 100%; justify-content: center;">
+                        <a href="tel:08098163546" class="btn japanese" style="background: var(--yellow); color: var(--dark); box-shadow: 0 4px 0 #d4a500; font-size: clamp(0.9rem, 3vw, 1rem); padding: 0.8rem 1rem; white-space: nowrap;">📞 今すぐ電話</a>
+                        <a href="tel:08098163546" class="btn english" style="background: var(--yellow); color: var(--dark); box-shadow: 0 4px 0 #d4a500; font-size: clamp(0.9rem, 3vw, 1rem); padding: 0.8rem 1rem; white-space: nowrap;">📞 Call Now</a>
+                    </div>
+                    <div style="display: flex; gap: 10px; width: 100%; justify-content: center;">
+                        <a href="#contact" class="btn japanese" style="font-size: clamp(0.9rem, 3vw, 1rem); padding: 0.8rem 1rem; white-space: nowrap;">✉️ メールで問い合わせ</a>
+                        <a href="#contact" class="btn english" style="font-size: clamp(0.9rem, 3vw, 1rem); padding: 0.8rem 1rem; white-space: nowrap;">✉️ Email Inquiry</a>
+                    </div>
+                </div>
+                <p class="japanese" style="margin-top: 10px; font-size: clamp(0.7rem, 2.5vw, 0.9rem); background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 5px; display: inline-block;">営業時間: 火～金 13:00-20:00 / 土 9:00-15:00</p>
+                <p class="english" style="margin-top: 10px; font-size: clamp(0.7rem, 2.5vw, 0.9rem); background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 5px; display: inline-block;">Open: Tue-Fri 1pm-8pm / Sat 9am-3pm</p>
             </div>
         </div>
-        <p class="japanese" style="margin-top: 10px; font-size: clamp(0.7rem, 2.5vw, 0.9rem); background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 5px; display: inline-block;">営業時間: 火～金 13:00-20:00 / 土 9:00-15:00</p>
-        <p class="english" style="margin-top: 10px; font-size: clamp(0.7rem, 2.5vw, 0.9rem); background: rgba(0,0,0,0.3); padding: 5px 10px; border-radius: 5px; display: inline-block;">Open: Tue-Fri 1pm-8pm / Sat 9am-3pm</p>
-    </div>
-</div>
-</div>
-</section>
+    </section>
 
     <section id="about">
         <div class="container">
@@ -1146,18 +1136,18 @@ body:not(.show-english) .english {
                     <p class="english">All teachers are native speakers (British), supported by our Japanese manager Minako.</p>
                 </div>
                 <div class="about-image fade-in delay-1">
-    <div class="teacher-carousel">
-        <div class="teacher-carousel-slide active">
-            <img src="images/minako.jpg" alt="Minako">
-        </div>
-        <div class="teacher-carousel-slide">
-            <img src="images/tonyteacher.jpg" alt="Tony">
-        </div>
-        <div class="teacher-carousel-slide">
-            <img src="images/jay.jpg" alt="Jay">
-        </div>
-    </div>
-</div>
+                    <div class="teacher-carousel">
+                        <div class="teacher-carousel-slide active">
+                            <img src="images/minako.jpg" alt="Minako">
+                        </div>
+                        <div class="teacher-carousel-slide">
+                            <img src="images/tonyteacher.jpg" alt="Tony">
+                        </div>
+                        <div class="teacher-carousel-slide">
+                            <img src="images/jay.jpg" alt="Jay">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1169,185 +1159,183 @@ body:not(.show-english) .english {
                 <h2 class="english">Classes & Pricing</h2>
             </div>
 
+            <div class="class-cards">
+                <!-- Baby Class 0-2 -->
+                <div class="class-card fade-in kids-class">
+                    <div class="class-card-header">
+                        <h3 class="japanese">0-2歳ベビークラス</h3>
+                        <h3 class="english">0-2 Years Baby Class</h3>
+                    </div>
+                    <div class="class-card-body">
+                        <ul>
+                            <li class="japanese">定員: 2名 (保護者同伴)</li>
+                            <li class="english">Capacity: 2 (with parent)</li>
+                            <li class="japanese">授業時間: 30分</li>
+                            <li class="english">Lesson time: 30 minutes</li>
+                            <li class="japanese">レベル: ベビー</li>
+                            <li class="english">Level: Baby</li>
+                        </ul>
+                        <div class="price japanese">¥4,000<span> (税抜) / ¥4,400 (税込)</span></div>
+                        <div class="price english">¥4,000<span> (excl. tax) / ¥4,400 (incl. tax)</span></div>
+                        <p class="japanese small">*月4回 (48回/年)</p>
+                        <p class="english small">*4 times/month (48 times/year)</p>
+                    </div>
+                </div>
 
+                <!-- Toddler Class 2-4 -->
+                <div class="class-card fade-in kids-class">
+                    <div class="class-card-header">
+                        <h3 class="japanese">2-4歳クラス</h3>
+                        <h3 class="english">2-4 Years Class</h3>
+                    </div>
+                    <div class="class-card-body">
+                        <ul>
+                            <li class="japanese">定員: 2名 (保護者同伴)</li>
+                            <li class="english">Capacity: 2 (with parent)</li>
+                            <li class="japanese">授業時間: 40分</li>
+                            <li class="english">Lesson time: 40 minutes</li>
+                        </ul>
+                        <div class="price japanese">¥5,200<span> (税抜) / ¥5,720 (税込)</span></div>
+                        <div class="price english">¥5,200<span> (excl. tax) / ¥5,720 (incl. tax)</span></div>
+                        <p class="japanese small">*月4回 (48回/年)</p>
+                        <p class="english small">*4 times/month (48 times/year)</p>
+                    </div>
+                </div>
 
-<div class="class-cards">
-    <!-- Baby Class 0-2 -->
-    <div class="class-card fade-in kids-class">
-        <div class="class-card-header">
-            <h3 class="japanese">0-2歳ベビークラス</h3>
-            <h3 class="english">0-2 Years Baby Class</h3>
-        </div>
-        <div class="class-card-body">
-            <ul>
-                <li class="japanese">定員: 2名 (保護者同伴)</li>
-                <li class="english">Capacity: 2 (with parent)</li>
-                <li class="japanese">授業時間: 30分</li>
-                <li class="english">Lesson time: 30 minutes</li>
-                <li class="japanese">レベル: ベビー</li>
-                <li class="english">Level: Baby</li>
-            </ul>
-            <div class="price japanese">¥4,000<span> (税抜) / ¥4,400 (税込)</span></div>
-            <div class="price english">¥4,000<span> (excl. tax) / ¥4,400 (incl. tax)</span></div>
-            <p class="japanese small">*月4回 (48回/年)</p>
-            <p class="english small">*4 times/month (48 times/year)</p>
-        </div>
-    </div>
+                <!-- Existing 4-6 Class (updated with tax) -->
+                <div class="class-card fade-in kids-class">
+                    <div class="class-card-header">
+                        <h3 class="japanese">4-6歳</h3>
+                        <h3 class="english">4-6 Years Old</h3>
+                    </div>
+                    <div class="class-card-body">
+                        <ul>
+                            <li class="japanese">定員: 4名</li>
+                            <li class="english">Capacity: 4 people</li>
+                            <li class="japanese">授業時間: 40分</li>
+                            <li class="english">Lesson time: 40 minutes</li>
+                            <li class="japanese">レベル: 1 (フォニックス中心)</li>
+                            <li class="english">Level: 1 (Phonics focus)</li>
+                        </ul>
+                        <div class="price japanese">¥5,200<span> (税抜) / ¥5,720 (税込)</span></div>
+                        <div class="price english">¥5,200<span> (excl. tax) / ¥5,720 (incl. tax)</span></div>
+                        <p class="japanese small">*月4回 (48回/年)</p>
+                        <p class="english small">*4 times/month (48 times/year)</p>
+                    </div>
+                </div>
 
-    <!-- Toddler Class 2-4 -->
-    <div class="class-card fade-in kids-class">
-        <div class="class-card-header">
-            <h3 class="japanese">2-4歳クラス</h3>
-            <h3 class="english">2-4 Years Class</h3>
-        </div>
-        <div class="class-card-body">
-            <ul>
-                <li class="japanese">定員: 2名 (保護者同伴)</li>
-                <li class="english">Capacity: 2 (with parent)</li>
-                <li class="japanese">授業時間: 40分</li>
-                <li class="english">Lesson time: 40 minutes</li>
-            </ul>
-            <div class="price japanese">¥5,200<span> (税抜) / ¥5,720 (税込)</span></div>
-            <div class="price english">¥5,200<span> (excl. tax) / ¥5,720 (incl. tax)</span></div>
-            <p class="japanese small">*月4回 (48回/年)</p>
-            <p class="english small">*4 times/month (48 times/year)</p>
-        </div>
-    </div>
+                <!-- Existing Elementary Class (updated with tax) -->
+                <div class="class-card fade-in delay-1 kids-class">
+                    <div class="class-card-header">
+                        <h3 class="japanese">小学生グループ</h3>
+                        <h3 class="english">Elementary Group</h3>
+                    </div>
+                    <div class="class-card-body">
+                        <ul>
+                            <li class="japanese">定員: 4名</li>
+                            <li class="english">Capacity: 4 people</li>
+                            <li class="japanese">授業時間: 50分</li>
+                            <li class="english">Lesson time: 50 minutes</li>
+                            <li class="japanese">レベル: 1-6</li>
+                            <li class="english">Levels: 1-6</li>
+                        </ul>
+                        <div class="price japanese">¥6,500<span> (税抜) / ¥7,150 (税込)</span></div>
+                        <div class="price english">¥6,500<span> (excl. tax) / ¥7,150 (incl. tax)</span></div>
+                        <p class="japanese small">*月4回 (48回/年)</p>
+                        <p class="english small">*4 times/month (48 times/year)</p>
+                    </div>
+                </div>
 
-    <!-- Existing 4-6 Class (updated with tax) -->
-    <div class="class-card fade-in kids-class">
-        <div class="class-card-header">
-            <h3 class="japanese">4-6歳</h3>
-            <h3 class="english">4-6 Years Old</h3>
-        </div>
-        <div class="class-card-body">
-            <ul>
-                <li class="japanese">定員: 4名</li>
-                <li class="english">Capacity: 4 people</li>
-                <li class="japanese">授業時間: 40分</li>
-                <li class="english">Lesson time: 40 minutes</li>
-                <li class="japanese">レベル: 1 (フォニックス中心)</li>
-                <li class="english">Level: 1 (Phonics focus)</li>
-            </ul>
-            <div class="price japanese">¥5,200<span> (税抜) / ¥5,720 (税込)</span></div>
-            <div class="price english">¥5,200<span> (excl. tax) / ¥5,720 (incl. tax)</span></div>
-            <p class="japanese small">*月4回 (48回/年)</p>
-            <p class="english small">*4 times/month (48 times/year)</p>
-        </div>
-    </div>
+                <!-- Adult Group Class (updated with tax) -->
+                <div class="class-card fade-in delay-1 adult-class">
+                    <div class="class-card-header">
+                        <h3 class="japanese">大人グループ</h3>
+                        <h3 class="english">Adult Group</h3>
+                    </div>
+                    <div class="class-card-body">
+                        <ul>
+                            <li class="japanese">定員: 4名</li>
+                            <li class="english">Capacity: 4 people</li>
+                            <li class="japanese">授業時間: 50分</li>
+                            <li class="english">Lesson time: 50 minutes</li>
+                            <li class="japanese">レベル: 1-4</li>
+                            <li class="english">Levels: 1-4</li>
+                        </ul>
+                        <div class="price japanese">¥8,500<span> (税抜) / ¥9,350 (税込)</span></div>
+                        <div class="price english">¥8,500<span> (excl. tax) / ¥9,350 (incl. tax)</span></div>
+                        <p class="japanese small">*月4回 (48回/年)</p>
+                        <p class="english small">*4 times/month (48 times/year)</p>
+                    </div>
+                </div>
 
-    <!-- Existing Elementary Class (updated with tax) -->
-    <div class="class-card fade-in delay-1 kids-class">
-        <div class="class-card-header">
-            <h3 class="japanese">小学生グループ</h3>
-            <h3 class="english">Elementary Group</h3>
-        </div>
-        <div class="class-card-body">
-            <ul>
-                <li class="japanese">定員: 4名</li>
-                <li class="english">Capacity: 4 people</li>
-                <li class="japanese">授業時間: 50分</li>
-                <li class="english">Lesson time: 50 minutes</li>
-                <li class="japanese">レベル: 1-6</li>
-                <li class="english">Levels: 1-6</li>
-            </ul>
-            <div class="price japanese">¥6,500<span> (税抜) / ¥7,150 (税込)</span></div>
-            <div class="price english">¥6,500<span> (excl. tax) / ¥7,150 (incl. tax)</span></div>
-            <p class="japanese small">*月4回 (48回/年)</p>
-            <p class="english small">*4 times/month (48 times/year)</p>
-        </div>
-    </div>
+                <!-- Private Class (updated with tax) -->
+                <div class="class-card fade-in private-class">
+                    <div class="class-card-header">
+                        <h3 class="japanese">プライベートレッスン</h3>
+                        <h3 class="english">Private Lesson</h3>
+                    </div>
+                    <div class="class-card-body">
+                        <ul>
+                            <li class="japanese">定員: 1名</li>
+                            <li class="english">Capacity: 1 person</li>
+                            <li class="japanese">授業時間: 45分</li>
+                            <li class="english">Lesson time: 45 minutes</li>
+                            <li class="japanese">すべてのレベル対応</li>
+                            <li class="english">All levels welcome</li>
+                        </ul>
+                        <div class="price japanese">¥12,000<span> (税抜) / ¥13,200 (税込)</span></div>
+                        <div class="price english">¥12,000<span> (excl. tax) / ¥13,200 (incl. tax)</span></div>
+                        <p class="japanese small">*月4回 (48回/年)</p>
+                        <p class="english small">*4 times/month (48 times/year)</p>
+                    </div>
+                </div>
 
-    <!-- Adult Group Class (updated with tax) -->
-    <div class="class-card fade-in delay-1 adult-class">
-        <div class="class-card-header">
-            <h3 class="japanese">大人グループ</h3>
-            <h3 class="english">Adult Group</h3>
+                <!-- Special Evening Class (updated with tax) -->
+                <div class="class-card fade-in delay-3 special-class">
+                    <div class="class-card-header">
+                        <div class="special-badge japanese">大人気!</div>
+                        <div class="special-badge english">Very Popular!</div>
+                        <h3 class="japanese">特別夜間クラス (中高生)</h3>
+                        <h3 class="english">Special Evening Class (12+)</h3>
+                    </div>
+                    <div class="class-card-body">
+                        <ul>
+                            <li class="japanese">定員: 6名</li>
+                            <li class="english">Capacity: 6 people</li>
+                            <li class="japanese">授業時間: 45分</li>
+                            <li class="english">Lesson time: 45 minutes</li>
+                            <li class="japanese">時間: 午後7時～</li>
+                            <li class="english">Time: 7pm~</li>
+                            <li class="japanese">学校の英語を補完 - 会話とリスニング中心</li>
+                            <li class="english">Complements school English - Focus on speaking/listening</li>
+                            <li class="japanese">通常の学生グループよりお得</li>
+                            <li class="english">Better value than regular student group</li>
+                        </ul>
+                        <div class="price japanese">¥4,000<span> (税抜/1回) / ¥4,400 (税込)</span></div>
+                        <div class="price english">¥4,000<span> (excl. tax/session) / ¥4,400 (incl. tax)</span></div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="class-card-body">
-            <ul>
-                <li class="japanese">定員: 4名</li>
-                <li class="english">Capacity: 4 people</li>
-                <li class="japanese">授業時間: 50分</li>
-                <li class="english">Lesson time: 50 minutes</li>
-                <li class="japanese">レベル: 1-4</li>
-                <li class="english">Levels: 1-4</li>
-            </ul>
-            <div class="price japanese">¥8,500<span> (税抜) / ¥9,350 (税込)</span></div>
-            <div class="price english">¥8,500<span> (excl. tax) / ¥9,350 (incl. tax)</span></div>
-            <p class="japanese small">*月4回 (48回/年)</p>
-            <p class="english small">*4 times/month (48 times/year)</p>
-        </div>
-    </div>
-
-    <!-- Private Class (updated with tax) -->
-    <div class="class-card fade-in private-class">
-        <div class="class-card-header">
-            <h3 class="japanese">プライベートレッスン</h3>
-            <h3 class="english">Private Lesson</h3>
-        </div>
-        <div class="class-card-body">
-            <ul>
-                <li class="japanese">定員: 1名</li>
-                <li class="english">Capacity: 1 person</li>
-                <li class="japanese">授業時間: 45分</li>
-                <li class="english">Lesson time: 45 minutes</li>
-                <li class="japanese">すべてのレベル対応</li>
-                <li class="english">All levels welcome</li>
-            </ul>
-            <div class="price japanese">¥12,000<span> (税抜) / ¥13,200 (税込)</span></div>
-            <div class="price english">¥12,000<span> (excl. tax) / ¥13,200 (incl. tax)</span></div>
-            <p class="japanese small">*月4回 (48回/年)</p>
-            <p class="english small">*4 times/month (48 times/year)</p>
-        </div>
-    </div>
-
-    <!-- Special Evening Class (updated with tax) -->
-    <div class="class-card fade-in delay-3 special-class">
-        <div class="class-card-header">
-            <div class="special-badge japanese">大人気!</div>
-            <div class="special-badge english">Very Popular!</div>
-            <h3 class="japanese">特別夜間クラス (中高生)</h3>
-            <h3 class="english">Special Evening Class (12+)</h3>
-        </div>
-        <div class="class-card-body">
-            <ul>
-                <li class="japanese">定員: 6名</li>
-                <li class="english">Capacity: 6 people</li>
-                <li class="japanese">授業時間: 45分</li>
-                <li class="english">Lesson time: 45 minutes</li>
-                <li class="japanese">時間: 午後7時～</li>
-                <li class="english">Time: 7pm~</li>
-                <li class="japanese">学校の英語を補完 - 会話とリスニング中心</li>
-                <li class="english">Complements school English - Focus on speaking/listening</li>
-                <li class="japanese">通常の学生グループよりお得</li>
-                <li class="english">Better value than regular student group</li>
-            </ul>
-            <div class="price japanese">¥4,000<span> (税抜/1回) / ¥4,400 (税込)</span></div>
-            <div class="price english">¥4,000<span> (excl. tax/session) / ¥4,400 (incl. tax)</span></div>
-        </div>
-    </div>
-</div>
-            
     </section>
 
     <section id="teachers">
-    <div class="container">
-        <div class="section-title">
-            <h2 class="japanese">講師紹介</h2>
-            <h2 class="english">Our Teachers</h2>
-        </div>
-        <div class="teacher-cards">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="japanese">講師紹介</h2>
+                <h2 class="english">Our Teachers</h2>
+            </div>
+            <div class="teacher-cards">
                 <div class="teacher-card fade-in">
-    <div class="teacher-image">
-        <img src="images/tonyteacher.jpg" alt="Tony">
-    </div>
-    <div class="teacher-info">
-        <h3>Tony</h3>
-        <p class="japanese">イギリス出身のネイティブ講師。10年の指導経験。</p>
-        <p class="english">Native speaker from UK. 10 years teaching experience.</p>
-    </div>
-</div>
+                    <div class="teacher-image">
+                        <img src="images/tonyteacher.jpg" alt="Tony">
+                    </div>
+                    <div class="teacher-info">
+                        <h3>Tony</h3>
+                        <p class="japanese">イギリス出身のネイティブ講師。10年の指導経験。</p>
+                        <p class="english">Native speaker from UK. 10 years teaching experience.</p>
+                    </div>
+                </div>
                 
                 <div class="teacher-card fade-in delay-1">
                     <div class="teacher-image">
@@ -1411,18 +1399,18 @@ body:not(.show-english) .english {
                             <label for="name" class="english">Name</label>
                             <input type="text" id="name" name="name" required>
                         </div>
-                       <div class="form-group">
-    <label for="email" class="japanese">メールアドレス</label>
-    <label for="email" class="english">Email</label>
-    <input type="email" id="email" name="email" oninput="checkContactInfo()">
-</div>
-<div class="form-group">
-    <label for="phone" class="japanese">電話番号</label>
-    <label for="phone" class="english">Phone Number</label>
-    <input type="tel" id="phone" name="phone" oninput="checkContactInfo()">
-</div>
-<p id="contactError" style="color: red; display: none;" class="japanese">メールアドレスか電話番号のいずれかを入力してください</p>
-<p id="contactError" style="color: red; display: none;" class="english">Please provide either email or phone number</p>
+                        <div class="form-group">
+                            <label for="email" class="japanese">メールアドレス</label>
+                            <label for="email" class="english">Email</label>
+                            <input type="email" id="email" name="email" oninput="checkContactInfo()">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="japanese">電話番号</label>
+                            <label for="phone" class="english">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" oninput="checkContactInfo()">
+                        </div>
+                        <p id="contactError" style="color: red; display: none;" class="japanese">メールアドレスか電話番号のいずれかを入力してください</p>
+                        <p id="contactError" style="color: red; display: none;" class="english">Please provide either email or phone number</p>
                         <div class="form-group">
                             <label for="interest" class="japanese">興味のあるクラス</label>
                             <label for="interest" class="english">Class of Interest</label>
@@ -1436,11 +1424,11 @@ body:not(.show-english) .english {
                                 <option value="student" class="japanese">学生グループ</option>
                                 <option value="student" class="english">Student Group</option>
                                 <option value="baby" class="japanese">0-2歳ベビークラス</option>
-<option value="baby" class="english">0-2 Years Baby Class</option>
-<option value="toddler" class="japanese">2-4歳クラス</option>
-<option value="toddler" class="english">2-4 Years Class</option>
-<option value="kids" class="japanese">4-6歳クラス</option>
-<option value="kids" class="english">4-6 Years Old</option>
+                                <option value="baby" class="english">0-2 Years Baby Class</option>
+                                <option value="toddler" class="japanese">2-4歳クラス</option>
+                                <option value="toddler" class="english">2-4 Years Class</option>
+                                <option value="kids" class="japanese">4-6歳クラス</option>
+                                <option value="kids" class="english">4-6 Years Old</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -1450,17 +1438,17 @@ body:not(.show-english) .english {
                         </div>
                         <div data-netlify-recaptcha="true"></div>
                         <div style="background: rgba(255,200,0,0.1); padding: 1rem; border-radius: 10px; border: 2px dashed var(--yellow); margin-bottom: 1rem; text-align: center;">
-    <p class="japanese" style="color: var(--secondary); font-weight: bold; margin-bottom: 0.5rem;">8月限定: 人気の時間帯はすぐに埋まります</p>
-<p class="english" style="color: var(--secondary); font-weight: bold; margin-bottom: 0.5rem;">August Special: Places are limited, especially at popular times</p>
-</div>
-<button type="submit" class="btn japanese" style="background: linear-gradient(45deg, var(--secondary), #FF2B4A); width: 100%; padding: 1.2rem; font-size: 1.3em; font-weight: bold; animation: pulse 1.5s infinite;">
-    <span style="font-size:1.5em;">👉</span> 今すぐ無料体験を予約する
-</button>
-<button type="submit" class="btn english" style="background: linear-gradient(45deg, var(--secondary), #FF2B4A); width: 100%; padding: 1.2rem; font-size: 1.3em; font-weight: bold; animation: pulse 1.5s infinite;">
-    <span style="font-size:1.5em;">👉</span> Book Free Trial Now
-</button>
-<p class="japanese" style="text-align: center; margin-top: 1rem; font-size: 0.9rem;">またはお電話で: <a href="tel:08098163546" style="color: var(--secondary); font-weight: bold; text-decoration: underline;">080-9816-3546</a></p>
-<p class="english" style="text-align: center; margin-top: 1rem; font-size: 0.9rem;">Or call: <a href="tel:08098163546" style="color: var(--secondary); font-weight: bold; text-decoration: underline;">080-9816-3546</a></p>>
+                            <p class="japanese" style="color: var(--secondary); font-weight: bold; margin-bottom: 0.5rem;">8月限定: 人気の時間帯はすぐに埋まります</p>
+                            <p class="english" style="color: var(--secondary); font-weight: bold; margin-bottom: 0.5rem;">August Special: Places are limited, especially at popular times</p>
+                        </div>
+                        <button type="submit" class="btn japanese" style="background: linear-gradient(45deg, var(--secondary), #FF2B4A); width: 100%; padding: 1.2rem; font-size: 1.3em; font-weight: bold; animation: pulse 1.5s infinite;">
+                            <span style="font-size:1.5em;">👉</span> 今すぐ無料体験を予約する
+                        </button>
+                        <button type="submit" class="btn english" style="background: linear-gradient(45deg, var(--secondary), #FF2B4A); width: 100%; padding: 1.2rem; font-size: 1.3em; font-weight: bold; animation: pulse 1.5s infinite;">
+                            <span style="font-size:1.5em;">👉</span> Book Free Trial Now
+                        </button>
+                        <p class="japanese" style="text-align: center; margin-top: 1rem; font-size: 0.9rem;">またはお電話で: <a href="tel:08098163546" style="color: var(--secondary); font-weight: bold; text-decoration: underline;">080-9816-3546</a></p>
+                        <p class="english" style="text-align: center; margin-top: 1rem; font-size: 0.9rem;">Or call: <a href="tel:08098163546" style="color: var(--secondary); font-weight: bold; text-decoration: underline;">080-9816-3546</a></p>
                     </form>
                 </div>
             </div>
@@ -1531,202 +1519,165 @@ body:not(.show-english) .english {
         </div>
     </div>
 
-    <!-- Popup styles -->
-    <style>
-        .contact-popup {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.7);
-            z-index: 999;
-            align-items: center;
-            justify-content: center;
-        }
-        .popup-content {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            width: 90%;
-            max-width: 500px;
-            position: relative;
-            animation: popIn 0.4s ease-out;
-        }
-        @keyframes popIn {
-            0% { transform: scale(0.8); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-        .close-popup {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 24px;
-            cursor: pointer;
-            color: var(--dark);
-        }
-        .popup-content h3 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-        .popup-content .form-group {
-            margin-bottom: 15px;
-        }
-        .popup-content input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-    </style>
-
     <div class="language-switcher">
         <button class="language-btn" id="languageBtn">EN/日本語</button>
     </div>
-    <script>
-      // Contact popup functionality
-const floatingContactBtn = document.getElementById('floatingContactBtn');
-const contactPopup = document.getElementById('contactPopup');
-const closePopup = document.getElementById('closePopup');
-        
-floatingContactBtn.addEventListener('click', () => {
-    contactPopup.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-});
-        
-closePopup.addEventListener('click', () => {
-    contactPopup.style.display = 'none';
-    document.body.style.overflow = 'auto';
-});
-        
-// Close popup when clicking outside
-contactPopup.addEventListener('click', (e) => {
-    if (e.target === contactPopup) {
+
+<script>
+    // Contact popup functionality
+    const floatingContactBtn = document.getElementById('floatingContactBtn');
+    const floatingCallBtn = document.getElementById('floatingCallBtn');
+    const contactPopup = document.getElementById('contactPopup');
+    const closePopup = document.getElementById('closePopup');
+    
+    floatingContactBtn.addEventListener('click', () => {
+        contactPopup.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    });
+    
+    closePopup.addEventListener('click', () => {
         contactPopup.style.display = 'none';
         document.body.style.overflow = 'auto';
+    });
+    
+    // Close popup when clicking outside
+    contactPopup.addEventListener('click', (e) => {
+        if (e.target === contactPopup) {
+            contactPopup.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+    
+    // Mobile menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const nav = document.querySelector('nav ul');
+    
+    hamburger.addEventListener('click', () => {
+        nav.classList.toggle('show');
+    });
+    
+    // Carousel functionality
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const slideCount = slides.length;
+
+    function showSlide(index) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        slides[index].classList.add('active');
     }
-});
-        
-// Mobile menu toggle
-const hamburger = document.querySelector('.hamburger');
-const nav = document.querySelector('nav ul');
-        
-hamburger.addEventListener('click', () => {
-    nav.classList.toggle('show');
-});
-// Carousel functionality
-let currentSlide = 0;
-const slides = document.querySelectorAll('.carousel-slide');
-const slideCount = slides.length;
 
-function showSlide(index) {
-    slides.forEach(slide => slide.classList.remove('active'));
-    slides[index].classList.add('active');
-}
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slideCount;
+        showSlide(currentSlide);
+    }
 
-function nextSlide() {
-    currentSlide = (currentSlide + 1) % slideCount;
-    showSlide(currentSlide);
-}
+    // Teacher Carousel functionality
+    let currentTeacherSlide = 0;
+    const teacherSlides = document.querySelectorAll('.teacher-carousel-slide');
+    const teacherSlideCount = teacherSlides.length;
 
-// Teacher Carousel functionality
-let currentTeacherSlide = 0;
-const teacherSlides = document.querySelectorAll('.teacher-carousel-slide');
-const teacherSlideCount = teacherSlides.length;
+    function showTeacherSlide(index) {
+        teacherSlides.forEach(slide => slide.classList.remove('active'));
+        teacherSlides[index].classList.add('active');
+    }
 
-function showTeacherSlide(index) {
-    teacherSlides.forEach(slide => slide.classList.remove('active'));
-    teacherSlides[index].classList.add('active');
-}
+    function nextTeacherSlide() {
+        currentTeacherSlide = (currentTeacherSlide + 1) % teacherSlideCount;
+        showTeacherSlide(currentTeacherSlide);
+    }
 
-function nextTeacherSlide() {
-    currentTeacherSlide = (currentTeacherSlide + 1) % teacherSlideCount;
-    showTeacherSlide(currentTeacherSlide);
-}
+    // Set up both carousels
+    let carouselInterval = setInterval(nextSlide, 5000);
+    setInterval(nextTeacherSlide, 2000);
 
-// Set up both carousels
-let carouselInterval = setInterval(nextSlide, 5000);
-setInterval(nextTeacherSlide, 2000);
+    // Pause main carousel on hover
+    const heroCarousel = document.querySelector('.hero-carousel');
+    heroCarousel.addEventListener('mouseenter', () => {
+        clearInterval(carouselInterval);
+    });
 
-// Pause main carousel on hover
-const heroCarousel = document.querySelector('.hero-carousel');
-heroCarousel.addEventListener('mouseenter', () => {
-    clearInterval(carouselInterval);
-});
+    heroCarousel.addEventListener('mouseleave', () => {
+        carouselInterval = setInterval(nextSlide, 5000);
+    });
 
-heroCarousel.addEventListener('mouseleave', () => {
-    carouselInterval = setInterval(nextSlide, 5000);
-});
+    // Initialize both carousels
+    showSlide(0);
+    showTeacherSlide(0);
 
-// Initialize both carousels
-showSlide(0);
-showTeacherSlide(0);
+    // Language switcher
+    const languageBtn = document.getElementById('languageBtn');
+    const body = document.body;
 
-// Language switcher - SIMPLIFIED WORKING VERSION
-const languageBtn = document.getElementById('languageBtn');
-const body = document.body;
-
-// Set initial state
-updateLanguageDisplay();
-
-languageBtn.addEventListener('click', () => {
-    body.classList.toggle('show-english');
+    // Set initial state
     updateLanguageDisplay();
-});
 
-function updateLanguageDisplay() {
-    // Update button text
-    if (body.classList.contains('show-english')) {
-        languageBtn.textContent = '日本語';
-    } else {
-        languageBtn.textContent = 'EN';
+    languageBtn.addEventListener('click', () => {
+        body.classList.toggle('show-english');
+        updateLanguageDisplay();
+    });
+
+    function updateLanguageDisplay() {
+        // Update button text
+        if (body.classList.contains('show-english')) {
+            languageBtn.textContent = '日本語';
+        } else {
+            languageBtn.textContent = 'EN';
+        }
+        
+        // Update banners
+        document.querySelectorAll('.call-banner, .contact-banner').forEach(banner => {
+            banner.classList.remove('active');
+        });
     }
     
-    // Update banners
-    document.querySelectorAll('.call-banner, .contact-banner').forEach(banner => {
-        banner.classList.remove('active');
+    // Track phone clicks
+    document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+        link.addEventListener('click', function() {
+            // This would be replaced with your actual analytics code
+            console.log('Phone number clicked: ' + this.getAttribute('href'));
+            // Example: Facebook Pixel event
+            if(typeof fbq !== 'undefined') {
+                fbq('track', 'Contact');
+            }
+        });
     });
-}
-// Track phone clicks
-document.querySelectorAll('a[href^="tel:"]').forEach(link => {
-    link.addEventListener('click', function() {
-        // This would be replaced with your actual analytics code
-        console.log('Phone number clicked: ' + this.getAttribute('href'));
-        // Example: Facebook Pixel event
-        if(typeof fbq !== 'undefined') {
-            fbq('track', 'Contact');
-        }
-    });
-});
 
-// Form validation
-function checkContactInfo() {
-    const email = document.getElementById('email').value;
-    const phone = document.getElementById('phone').value;
-    const errorElements = document.querySelectorAll('#contactError');
-    
-    if (!email && !phone) {
-        errorElements.forEach(el => el.style.display = 'block');
-    } else {
-        errorElements.forEach(el => el.style.display = 'none');
+    // Form validation
+    function checkContactInfo() {
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const errorElements = document.querySelectorAll('#contactError');
+        
+        if (!email && !phone) {
+            errorElements.forEach(el => el.style.display = 'block');
+        } else {
+            errorElements.forEach(el => el.style.display = 'none');
+        }
     }
-}
 
-// Form submission tracking
-document.querySelectorAll('form').forEach(form => {
-    form.addEventListener('submit', function() {
-        console.log('Form submitted: ' + this.getAttribute('name'));
-        // Example: Google Analytics event
-        if(typeof gtag !== 'undefined') {
-            gtag('event', 'form_submission', {
-                'form_name': this.getAttribute('name')
-            });
-        }
+    // Form submission tracking
+    document.querySelectorAll('form').forEach(form => {
+        form.addEventListener('submit', function() {
+            console.log('Form submitted: ' + this.getAttribute('name'));
+            // Example: Google Analytics event
+            if(typeof gtag !== 'undefined') {
+                gtag('event', 'form_submission', {
+                    'form_name': this.getAttribute('name')
+                });
+            }
+        });
     });
-});
-    </script>
+    
+    // Floating button hover effects
+    floatingCallBtn.addEventListener('mouseenter', () => {
+        document.querySelector('.call-banner.japanese').classList.add('active');
+        document.querySelector('.call-banner.english').classList.add('active');
+    });
+    
+    floatingContactBtn.addEventListener('mouseenter', () => {
+        document.querySelector('.contact-banner.japanese').classList.add('active');
+        document.querySelector('.contact-banner.english').classList.add('active');
+    });
+</script>
 </body>
 </html>
