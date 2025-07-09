@@ -1552,9 +1552,9 @@
     const hamburger = document.querySelector('.hamburger');
     const nav = document.querySelector('nav ul');
     
-    hamburger.addEventListener('click', () => {
-        nav.classList.toggle('show');
-    });
+hamburger.addEventListener('click', () => {
+    nav.classList.toggle('show');
+}, {passive: true});
     
     // Carousel functionality
     let currentSlide = 0;
@@ -1592,13 +1592,13 @@
 
     // Pause main carousel on hover
     const heroCarousel = document.querySelector('.hero-carousel');
-    heroCarousel.addEventListener('mouseenter', () => {
-        clearInterval(carouselInterval);
-    });
+heroCarousel.addEventListener('mouseenter', () => {
+    clearInterval(carouselInterval);
+}, {passive: true});
 
-    heroCarousel.addEventListener('mouseleave', () => {
-        carouselInterval = setInterval(nextSlide, 5000);
-    });
+heroCarousel.addEventListener('mouseleave', () => {
+    carouselInterval = setInterval(nextSlide, 5000);
+}, {passive: true});
 
     // Initialize both carousels
     showSlide(0);
@@ -1670,14 +1670,24 @@
     
     // Floating button hover effects
     floatingCallBtn.addEventListener('mouseenter', () => {
-        document.querySelector('.call-banner.japanese').classList.add('active');
-        document.querySelector('.call-banner.english').classList.add('active');
-    });
-    
-    floatingContactBtn.addEventListener('mouseenter', () => {
-        document.querySelector('.contact-banner.japanese').classList.add('active');
-        document.querySelector('.contact-banner.english').classList.add('active');
-    });
+    document.querySelector('.call-banner.japanese').classList.add('active');
+    document.querySelector('.call-banner.english').classList.add('active');
+}, {passive: true});
+
+floatingContactBtn.addEventListener('mouseenter', () => {
+    document.querySelector('.contact-banner.japanese').classList.add('active');
+    document.querySelector('.contact-banner.english').classList.add('active');
+}, {passive: true});
+// Load Google Maps with passive event listeners
+function initMap() {
+    const options = { passive: true };
+    window.addEventListener('touchstart', () => {}, options);
+    window.addEventListener('touchmove', () => {}, options);
+    // Load Google Maps script
+    const script = document.createElement('script');
+    script.src = 'https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=initMap';
+    document.head.appendChild(script);
+}
 </script>
 </body>
 </html>
