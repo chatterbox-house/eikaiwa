@@ -1087,23 +1087,17 @@
         </div>
     </header>
 
-    <!-- Static Hero Content with Rotating Background -->
-    <section class="hero-carousel" id="home">
-        <!-- Only shop and ghiblishop images -->
-        <div class="carousel-slide active" style="background-image: url('images/shop.webp')"></div>
-<div class="carousel-slide" style="background-image: url('images/toddlers.webp')"></div>
-<div class="carousel-slide" style="background-image: url('images/ghiblishop.webp')"></div>
-        
-        <!-- Static Content (always visible) - Matching original styling -->
-        <div class="hero-content">
-            <div class="container">
-                <h1 class="japanese" style="line-height: 1.2; font-size: clamp(1.8rem, 6vw, 3rem); word-break: keep-all; overflow-wrap: break-word; padding: 0 10px; text-align: center;">
-                    <span style="display: block; color: var(--yellow);">無料体験レッスン</span>
-                    <span style="display: block;">実施中！</span>
-                </h1>
-                <h1 class="english" style="line-height: 1.3; font-size: clamp(1.5rem, 5vw, 2.5rem);"><span style="color: var(--yellow);">FREE Trial Lesson</span><br>Available Now!</h1>
-                <p class="japanese" style="font-size: clamp(0.9rem, 3vw, 1.2rem);">寝屋川市で最もアットホームな英会話スクール！<br>8月限定: 先着数名様のみ受付中</p>
-                <p class="english" style="font-size: clamp(0.9rem, 3vw, 1.2rem);">The coziest English school in Neyagawa!<br>August Special: Limited availability</p>
+<section class="hero-carousel" id="home" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.2)), url('images/shop.webp'); background-size: cover; background-position: center; position: relative;">
+    <!-- Content with improved visibility -->
+    <div class="hero-content" style="position: relative; z-index: 2;">
+        <div class="container">
+            <h1 class="japanese" style="line-height: 1.2; font-size: clamp(1.8rem, 6vw, 3rem); word-break: keep-all; overflow-wrap: break-word; padding: 0 10px; text-align: center; color: white;">
+                <span style="display: block; color: var(--yellow);">無料体験レッスン</span>
+                <span style="display: block;">実施中！</span>
+            </h1>
+            <h1 class="english" style="line-height: 1.3; font-size: clamp(1.5rem, 5vw, 2.5rem); color: white;"><span style="color: var(--yellow);">FREE Trial Lesson</span><br>Available Now!</h1>
+            <p class="japanese" style="font-size: clamp(0.9rem, 3vw, 1.2rem); color: white;">寝屋川市で最もアットホームな英会話スクール！<br>8月限定: 先着数名様のみ受付中</p>
+            <p class="english" style="font-size: clamp(0.9rem, 3vw, 1.2rem); color: white;">The coziest English school in Neyagawa!<br>August Special: Limited availability</p>
                 <div class="hero-buttons" style="flex-direction: column; align-items: center; gap: 10px; margin: 1rem 0;">
                     <div style="display: flex; gap: 10px; width: 100%; justify-content: center;">
                         <a href="tel:08098163546" class="btn japanese" style="background: var(--yellow); color: var(--dark); box-shadow: 0 4px 0 #d4a500; font-size: clamp(0.9rem, 3vw, 1rem); padding: 0.8rem 1rem; white-space: nowrap;">📞 今すぐ電話</a>
@@ -1135,29 +1129,12 @@
                     <p class="japanese">講師は全員ネイティブスピーカー（イギリス人）で、日本人マネージャーの未奈子がサポートします。</p>
                     <p class="english">All teachers are native speakers (British), supported by our Japanese manager Minako.</p>
                 </div>
-                <div class="about-image fade-in delay-1">
-                    <div class="teacher-carousel">
-                        <div class="teacher-carousel-slide active">
-    <picture>
-        <source srcset="images/minako.webp" type="image/webp">
-        <img src="images/minako.jpg" alt="Minako" loading="lazy">
-    </picture>
-</div>
-<div class="teacher-carousel-slide">
+<div class="about-image fade-in delay-1">
     <picture>
         <source srcset="images/tonyteacher.webp" type="image/webp">
-        <img src="images/tonyteacher.jpg" alt="Tony" loading="lazy">
+        <img src="images/tonyteacher.jpg" alt="Tony" loading="lazy" style="width: 100%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
     </picture>
 </div>
-<div class="teacher-carousel-slide">
-    <picture>
-        <source srcset="images/jay.webp" type="image/webp">
-        <img src="images/jay.jpg" alt="Jay" loading="lazy">
-    </picture>
-</div>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -1574,53 +1551,6 @@ hamburger.addEventListener('click', () => {
     nav.classList.toggle('show');
 }, {passive: true});
     
-    // Carousel functionality
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.carousel-slide');
-    const slideCount = slides.length;
-
-    function showSlide(index) {
-        slides.forEach(slide => slide.classList.remove('active'));
-        slides[index].classList.add('active');
-    }
-
-    function nextSlide() {
-        currentSlide = (currentSlide + 1) % slideCount;
-        showSlide(currentSlide);
-    }
-
-    // Teacher Carousel functionality
-    let currentTeacherSlide = 0;
-    const teacherSlides = document.querySelectorAll('.teacher-carousel-slide');
-    const teacherSlideCount = teacherSlides.length;
-
-    function showTeacherSlide(index) {
-        teacherSlides.forEach(slide => slide.classList.remove('active'));
-        teacherSlides[index].classList.add('active');
-    }
-
-    function nextTeacherSlide() {
-        currentTeacherSlide = (currentTeacherSlide + 1) % teacherSlideCount;
-        showTeacherSlide(currentTeacherSlide);
-    }
-
-    // Set up both carousels
-    let carouselInterval = setInterval(nextSlide, 5000);
-    setInterval(nextTeacherSlide, 2000);
-
-    // Pause main carousel on hover
-    const heroCarousel = document.querySelector('.hero-carousel');
-heroCarousel.addEventListener('mouseenter', () => {
-    clearInterval(carouselInterval);
-}, {passive: true});
-
-heroCarousel.addEventListener('mouseleave', () => {
-    carouselInterval = setInterval(nextSlide, 5000);
-}, {passive: true});
-
-    // Initialize both carousels
-    showSlide(0);
-    showTeacherSlide(0);
 
     // Language switcher
     const languageBtn = document.getElementById('languageBtn');
