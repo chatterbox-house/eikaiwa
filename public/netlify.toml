@@ -1,0 +1,15 @@
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    Access-Control-Allow-Origin = "https://yourdomain.com"
+
+[[redirects]]
+  from = "/.well-known/bandwidth-usage"
+  to = "https://api.netlify.com/api/v1/sites/YOUR_SITE_ID/bw"
+  status = 200
