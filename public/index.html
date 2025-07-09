@@ -553,18 +553,29 @@ nav ul li {
             transform: scale(1.1);
         }
         
-        /* Bilingual styles */
-        .english {
-            display: none;
-        }
-        
-        .show-english .english {
-            display: block;
-        }
-        
-        .show-english .japanese {
-            display: none;
-        }
+/* Language Switching - PROPER WORKING VERSION */
+/* Language Switching - SIMPLIFIED WORKING VERSION */
+/* Default state - Japanese visible */
+.japanese {
+    display: block;
+}
+.english {
+    display: none;
+}
+
+/* English state - English visible */
+body.show-english .english {
+    display: block;
+}
+body.show-english .japanese {
+    display: none;
+}
+
+/* Force all elements to respect these rules */
+body.show-english .japanese,
+body:not(.show-english) .english {
+    display: none !important;
+}
         
         /* Logo bilingual styles */
         .logo .english-name,
@@ -1653,25 +1664,28 @@ heroCarousel.addEventListener('mouseleave', () => {
 // Initialize both carousels
 showSlide(0);
 showTeacherSlide(0);
-// Language switcher
+
+// Language switcher - SIMPLIFIED WORKING VERSION
 const languageBtn = document.getElementById('languageBtn');
 const body = document.body;
 
-// Set initial state based on body class
-updateBanners();
+// Set initial state
+updateLanguageDisplay();
 
 languageBtn.addEventListener('click', () => {
     body.classList.toggle('show-english');
-    updateBanners();
+    updateLanguageDisplay();
+});
+
+function updateLanguageDisplay() {
+    // Update button text
     if (body.classList.contains('show-english')) {
         languageBtn.textContent = '日本語';
     } else {
         languageBtn.textContent = 'EN';
     }
-});
-
-function updateBanners() {
-    // Hide all banners first
+    
+    // Update banners
     document.querySelectorAll('.call-banner, .contact-banner').forEach(banner => {
         banner.classList.remove('active');
     });
