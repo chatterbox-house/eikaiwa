@@ -138,6 +138,70 @@
             display: none;
         }
         
+        /* Special Class Banner */
+        .special-class-banner {
+            background: linear-gradient(135deg, #FF2B4A, #FF6B8A);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 8px 20px rgba(255, 43, 74, 0.3);
+            animation: pulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        
+        .banner-content {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .banner-icon {
+            font-size: 3rem;
+            flex-shrink: 0;
+        }
+        
+        .banner-text {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .banner-text h3 {
+            color: white;
+            margin: 0 0 0.5rem 0;
+            font-size: 1.3rem;
+        }
+        
+        .banner-text p {
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0;
+            font-size: 0.95rem;
+        }
+        
+        .banner-btn {
+            background: white;
+            color: #FF2B4A;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        
+        .banner-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .banner-btn.english {
+            display: none;
+        }
+        
         /* Hero Carousel Styles */
         .hero-carousel {
             height: 60vh;
@@ -973,6 +1037,33 @@
                 font-size: 0.9rem;
             }
             
+            .special-class-banner {
+                padding: 1rem;
+            }
+            
+            .banner-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            .banner-icon {
+                font-size: 2.5rem;
+            }
+            
+            .banner-text h3 {
+                font-size: 1.1rem;
+            }
+            
+            .banner-text p {
+                font-size: 0.85rem;
+            }
+            
+            .banner-btn {
+                width: 100%;
+                text-align: center;
+            }
+            
             .header-content {
                 flex-direction: column;
                 text-align: center;
@@ -1234,6 +1325,20 @@
             <div class="section-title">
                 <h2 class="japanese">クラスと料金</h2>
                 <h2 class="english">Classes & Pricing</h2>
+            </div>
+
+            <div class="special-class-banner">
+                <div class="banner-content">
+                    <span class="banner-icon">🌙</span>
+                    <div class="banner-text">
+                        <h3 class="japanese">中高生向け・夜7時からの特別クラス</h3>
+                        <h3 class="english">Evening Class for Students (12+) — 7:00 PM</h3>
+                        <p class="japanese">1回 ¥4,400 (税込) — 定員6名</p>
+                        <p class="english">¥4,400 per lesson (incl. tax) — Max 6 students</p>
+                    </div>
+                    <a href="#contact" class="banner-btn japanese">今すぐ予約</a>
+                    <a href="#contact" class="banner-btn english">Book Now</a>
+                </div>
             </div>
 
             <div class="class-cards">
