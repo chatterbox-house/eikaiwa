@@ -744,6 +744,32 @@
             transform: scale(1.1);
         }
         
+        @media (hover: hover) {
+            .btn:hover {
+                background: #FF1A3D;
+                transform: translateY(-2px);
+                box-shadow: 0 6px 0 rgba(210, 50, 70, 0.8);
+            }
+            
+            .class-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            }
+            
+            .teacher-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            }
+            
+            .teacher-card:hover .teacher-image img {
+                transform: scale(1.1);
+            }
+            
+            .social-icons a:hover {
+                color: var(--accent);
+            }
+        }
+        
         /* Language Switching */
         .japanese {
             display: block;
@@ -1353,7 +1379,7 @@
 <div class="about-image fade-in delay-1">
     <picture>
         <source srcset="images/tonyteacher.webp" type="image/webp">
-        <img src="images/tonyteacher.jpg" alt="Tony" loading="lazy" style="width: 100%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+        <img src="images/tonyteacher.jpg" alt="Tony - British English teacher at Chatterbox House in Neyagawa, Osaka" loading="lazy" style="width: 100%; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
     </picture>
 </div>
         </div>
@@ -1529,7 +1555,7 @@
                     <div class="teacher-image">
     <picture>
         <source srcset="images/tonyteacher.webp" type="image/webp">
-        <img src="images/tonyteacher.jpg" alt="Tony" loading="lazy">
+        <img src="images/tonyteacher.jpg" alt="Tony - British English teacher at Chatterbox House in Neyagawa, Osaka" loading="lazy">
     </picture>
 </div>
                     <div class="teacher-info">
@@ -1543,7 +1569,7 @@
                     <div class="teacher-image">
     <picture>
         <source srcset="images/jay.webp" type="image/webp">
-        <img src="images/jay.jpg" alt="Jay" loading="lazy">
+        <img src="images/jay.jpg" alt="Jay - British English teacher specializing in children's classes at Chatterbox House" loading="lazy">
     </picture>
 </div>
                     <div class="teacher-info">
@@ -1557,7 +1583,7 @@
                     <div class="teacher-image">
     <picture>
         <source srcset="images/minako.webp" type="image/webp">
-        <img src="images/minako.jpg" alt="Minako" loading="lazy">
+        <img src="images/minako.jpg" alt="Minako - Japanese manager at Chatterbox House English school in Neyagawa" loading="lazy">
     </picture>
 </div>
                     <div class="teacher-info">
