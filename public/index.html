@@ -566,6 +566,18 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
+        #formSuccess {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
         .form-group {
             margin-bottom: 1.5rem;
         }
@@ -1652,6 +1664,21 @@
                         <p class="japanese" style="text-align: center; margin-top: 1rem; font-size: 0.9rem;">またはお電話で: <a href="tel:08098163546" style="color: var(--secondary); font-weight: bold; text-decoration: underline;">080-9816-3546</a></p>
                         <p class="english" style="text-align: center; margin-top: 1rem; font-size: 0.9rem;">Or call: <a href="tel:08098163546" style="color: var(--secondary); font-weight: bold; text-decoration: underline;">080-9816-3546</a></p>
                     </form>
+                    <div id="formSuccess" style="display: none; text-align: center; padding: 2rem;">
+                        <div style="font-size: 4rem; margin-bottom: 1rem;">✅</div>
+                        <h3 class="japanese" style="color: var(--primary); font-size: 1.5rem; margin-bottom: 1rem;">送信しました！</h3>
+                        <h3 class="english" style="color: var(--primary); font-size: 1.5rem; margin-bottom: 1rem;">Message Sent!</h3>
+                        <p class="japanese" style="color: var(--dark); margin-bottom: 1rem;">担当者より折り返しご連絡いたします。</p>
+                        <p class="english" style="color: var(--dark); margin-bottom: 1rem;">We will get back to you shortly.</p>
+                        <p class="japanese" style="color: var(--dark); margin-bottom: 2rem;">お電話でのお問い合わせも承っております。</p>
+                        <p class="english" style="color: var(--dark); margin-bottom: 2rem;">You can also call us directly.</p>
+                        <a href="tel:08098163546" class="btn japanese" style="background: linear-gradient(45deg, var(--secondary), #FF2B4A); padding: 1rem 2rem; font-size: 1.1em; font-weight: bold; display: inline-block; text-decoration: none; color: white; border-radius: 25px;">
+                            📞 080-9816-3546
+                        </a>
+                        <a href="tel:08098163546" class="btn english" style="background: linear-gradient(45deg, var(--secondary), #FF2B4A); padding: 1rem 2rem; font-size: 1.1em; font-weight: bold; display: inline-block; text-decoration: none; color: white; border-radius: 25px;">
+                            📞 080-9816-3546
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1813,8 +1840,28 @@ hamburger.addEventListener('click', () => {
 
     // Form submission tracking
     document.querySelectorAll('form').forEach(form => {
-        form.addEventListener('submit', function() {
+        form.addEventListener('submit', function(e) {
             console.log('Form submitted: ' + this.getAttribute('name'));
+            
+            // Show success message and hide form for contact form
+            if (this.getAttribute('name') === 'contact') {
+                e.preventDefault();
+                
+                // Hide the form
+                this.style.display = 'none';
+                
+                // Show success message
+                const successDiv = document.getElementById('formSuccess');
+                if (successDiv) {
+                    successDiv.style.display = 'block';
+                }
+                
+                // Submit the form programmatically
+                setTimeout(() => {
+                    this.submit();
+                }, 100);
+            }
+            
             // Example: Google Analytics event
             if(typeof gtag !== 'undefined') {
                 gtag('event', 'form_submission', {
