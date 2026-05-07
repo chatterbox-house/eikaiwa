@@ -541,6 +541,30 @@
             color: var(--accent);
         }
         
+        .faq-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .faq-item h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .faq-item p {
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
         .social-icons {
             display: flex;
             gap: 1rem;
@@ -1081,6 +1105,7 @@
                     <li><a href="#about" class="japanese">私たちについて</a><a href="#about" class="english">About</a></li>
                     <li><a href="#classes" class="japanese">クラス</a><a href="#classes" class="english">Classes</a></li>
                     <li><a href="#teachers" class="japanese">講師</a><a href="#teachers" class="english">Teachers</a></li>
+                    <li><a href="#faq" class="japanese">よくある質問</a><a href="#faq" class="english">FAQ</a></li>
                     <li><a href="#contact" class="japanese">お問い合わせ</a><a href="#contact" class="english">Contact</a></li>
                 </ul>
             </nav>
@@ -1335,6 +1360,41 @@
         </div>
     </section>
 
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="japanese">よくある質問</h2>
+                <h2 class="english">Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-content">
+                <div class="faq-item">
+                    <h3 class="japanese">振替授業はありますか？</h3>
+                    <h3 class="english">Can I reschedule lessons?</h3>
+                    <p class="japanese">はい、マネージャーに相談すれば振替可能です。</p>
+                    <p class="english">Yes, you can reschedule lessons with the manager.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="japanese">教材費はかかりますか？</h3>
+                    <h3 class="english">Are there textbook fees?</h3>
+                    <p class="japanese">いいえ、教材費はかかりません。</p>
+                    <p class="english">No, there are no textbook fees.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="japanese">兄弟割引はありますか？</h3>
+                    <h3 class="english">Is there a sibling discount?</h3>
+                    <p class="japanese">はい、兄弟割引があります。マネージャーにご相談ください。</p>
+                    <p class="english">Yes, there is a sibling discount; please discuss with the manager.</p>
+                </div>
+                <div class="faq-item">
+                    <h3 class="japanese">駐車場はありますか？</h3>
+                    <h3 class="english">Is there parking available?</h3>
+                    <p class="japanese">有料駐車場が近くにあります。萱島校のすぐ前や、近くのスーパーの駐車場をご利用いただけます。</p>
+                    <p class="english">Paid parking options exist nearby, including right in front of the Kayashima school and at a nearby supermarket for customers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="contact" id="contact">
         <div class="container">
             <div class="section-title">
@@ -1442,6 +1502,7 @@
                         <li><a href="#home" class="japanese">ホーム</a><a href="#home" class="english">Home</a></li>
                         <li><a href="#about" class="japanese">私たちについて</a><a href="#about" class="english">About</a></li>
                         <li><a href="#classes" class="japanese">クラス</a><a href="#classes" class="english">Classes</a></li>
+                        <li><a href="#faq" class="japanese">よくある質問</a><a href="#faq" class="english">FAQ</a></li>
                         <li><a href="#contact" class="japanese">お問い合わせ</a><a href="#contact" class="english">Contact</a></li>
                     </ul>
                 </div>
