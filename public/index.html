@@ -320,6 +320,28 @@
             transform: translateX(-50%);
         }
         
+        .since-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, var(--yellow), #FFD700);
+            color: var(--dark);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            margin-top: 0.8rem;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 8px rgba(255, 200, 0, 0.4);
+        }
+        
+        .since-icon {
+            font-size: 1.1rem;
+        }
+        
+        .since-text.english {
+            display: none;
+        }
+        
         .about-content {
             display: flex;
             flex-wrap: wrap;
@@ -1313,6 +1335,11 @@
             <div class="section-title">
                 <h2 class="japanese">私たちについて</h2>
                 <h2 class="english">About Us</h2>
+                <div class="since-badge">
+                    <span class="since-icon">🏆</span>
+                    <span class="since-text japanese">Since 2020</span>
+                    <span class="since-text english">Since 2020</span>
+                </div>
             </div>
             <div class="about-content">
                 <div class="about-text fade-in">
