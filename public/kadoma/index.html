@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>門真校　無料体験レッスン予約</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=IM+Fell+English&display=swap');
+        :root {
+            --primary: #58A700; /* Duolingo green */
+            --secondary: #FF2B4A; /* Duolingo red */
+            --light: #F8F8F8;
+            --dark: #2D2D2D;
+            --accent: #1CB0F6; /* Duolingo blue */
+            --yellow: #FFC800; /* Duolingo yellow */
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            word-break: normal;
+            overflow-wrap: break-word;
+        }
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+        h1, h2 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        ul {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        .tel-link {
+            font-size: 1.2rem;
+            word-break: break-all;
+            margin-bottom: 1rem;
+        }
+        .cta-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: var(--secondary);
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+            border-radius: 4px;
+        }
+        footer {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>門真校　新規開校！</h1>
+        <p>英語・会話レッスンの無料体験を今すぐ予約</p>
+    </header>
+
+    <section class="container">
+        <h2>レッスン詳細</h2>
+        <ul>
+            <li>📍 住所：大阪府門真市栄町　2‑15‑1　223ビル　3F</li>
+            <li>🕒 開校時間：月曜　9:00‑21:00（※13:00‑21:00に変更になる可能性あり）・土曜　9:00‑18:00</li>
+            <li>👩‍🏫 担当：ミナコ先生（英語ネイティブスピーカー）</li>
+            <li>🎯 内容：日常会話・フレーズ練習・ロールプレイ（初心者歓迎）</li>
+        </ul>
+
+        <h2>予約方法</h2>
+        <p class="tel-link">📞 電話で直接予約：<a href="tel:09012345678">090-1234-5678</a></p>
+        <p>または下のフォームからオンライン予約：</p>
+        <form action="https://formspree.io/f/your-form-id" method="POST">
+            <label>お名前 <input type="text" name="name" required></label><br>
+            <label>電話番号 <input type="tel" name="tel" required></label><br>
+            <label>希望日時 <input type="datetime-local" name="datetime" required></label><br>
+            <button type="submit" class="cta-btn">無料体験レッスンを予約する</button>
+        </form>
+        <p><small>※フォームはFormspree（またはGoogle Forms）を使用しています。個人情報は第三者に提供しません。</small></p>
+    </section>
+
+    <footer>
+        <p>© 2026 Chatterbox House</p>
+    </footer>
+</body>
+</html>
