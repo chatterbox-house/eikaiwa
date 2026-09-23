@@ -1346,16 +1346,6 @@
     </div>
     
     <header>
-        <div id="sticky-trial" style="position:fixed;bottom:80px;right:16px;z-index:9998;display:none;">
-  <a href="#contact" class="btn" style="padding:12px 20px;font-size:1rem;box-shadow:0 4px 20px rgba(0,0,0,0.2);">
-    👉 Book Free Trial
-  </a>
-</div>
-<script>
-  // Show after scrolling past hero
-  window.addEventListener('scroll', () => {
-    document.getElementById('sticky-trial').style.display = window.scrollY > 400 ? 'block' : 'none';
-  });
         <div class="flag-banner">
             <div class="container">
                 <div class="flag-banner-content">
@@ -1398,6 +1388,18 @@
             </nav>
         </div>
     </header>
+
+    <!-- Sticky Free Trial CTA -->
+    <div id="sticky-trial" style="position:fixed;bottom:90px;right:16px;z-index:9998;display:none;">
+        <a href="#contact" class="btn" style="padding:12px 20px;font-size:1rem;box-shadow:0 4px 20px rgba(0,0,0,0.2);background:linear-gradient(45deg,var(--secondary),#FF2B4A);">
+            👉 Book Free Trial
+        </a>
+    </div>
+    <script>
+        window.addEventListener('scroll', () => {
+            document.getElementById('sticky-trial').style.display = window.scrollY > 400 ? 'block' : 'none';
+        });
+    </script>
 
 <section class="hero-carousel" id="home" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url('images/shop.webp'); background-size: cover; background-position: center; position: relative;">
     <!-- Content with improved visibility -->
@@ -1862,12 +1864,12 @@
                         <p id="contactError" style="color: red; display: none;" class="japanese">メールアドレスか電話番号のいずれかを入力してください</p>
                         <p id="contactError" style="color: red; display: none;" class="english">Please provide either email or phone number</p>
                         <div class="form-group">
-<label class="japanese">ご希望の内容</label>
-<label class="english">What are you looking for?</label>
-<select id="interest" name="interest">
-  <option value="trial" class="japanese">無料体験レッスン</option>
-  <option value="trial" class="english">Free Trial Lesson</option>
-  <option value="private" class="japanese">プライベートレッスン</option>
+                            <label for="interest" class="japanese">ご希望の内容</label>
+                            <label for="interest" class="english">What are you looking for?</label>
+                            <select id="interest" name="interest">
+                                <option value="trial" class="japanese">無料体験レッスン</option>
+                                <option value="trial" class="english">Free Trial Lesson</option>
+                                <option value="private" class="japanese">プライベートレッスン</option>
                                 <option value="private" class="english">Private Lesson</option>
                                 <option value="adult" class="japanese">大人グループ</option>
                                 <option value="adult" class="english">Adult Group</option>
@@ -1988,19 +1990,25 @@
     </div>
 
     <script>
+        // Contact popup functionality
+        const floatingContactBtn = document.getElementById('floatingContactBtn');
+        const floatingCallBtn = document.getElementById('floatingCallBtn');
+        const contactPopup = document.getElementById('contactPopup');
+        const closePopup = document.getElementById('closePopup');
 
-    // Contact popup functionality
-    const floatingContactBtn = document.getElementById('floatingContactBtn');
-    const floatingCallBtn = document.getElementById('floatingCallBtn');
-    const contactPopup = document.getElementById('contactPopup');
-    const closePopup = document.getElementById('closePopup');
-    
-    floatingContactBtn.addEventListener('click', () => {
-        contactPopup.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-    });
-    
-    closePopup.addEventListener('click', () => {
+        // Click handler for mobile (opens popup)
+        floatingContactBtn.addEventListener('click', () => {
+            contactPopup.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        });
+
+        // Also handle hover for desktop
+        floatingContactBtn.addEventListener('mouseenter', () => {
+            document.querySelector('.contact-banner.japanese').classList.add('active');
+            document.querySelector('.contact-banner.english').classList.add('active');
+        }, {passive: true});
+
+        closePopup.addEventListener('click', () => {
         contactPopup.style.display = 'none';
         document.body.style.overflow = 'auto';
     });
