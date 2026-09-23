@@ -1390,16 +1390,12 @@
     </header>
 
     <!-- Sticky Free Trial CTA -->
-    <div id="sticky-trial" style="position:fixed;bottom:90px;right:16px;z-index:9998;display:none;">
+    <div id="sticky-trial" style="position:fixed;bottom:90px;right:16px;z-index:9998;display:block;">
         <a href="#contact" class="btn" style="padding:12px 20px;font-size:1rem;box-shadow:0 4px 20px rgba(0,0,0,0.2);background:linear-gradient(45deg,var(--secondary),#FF2B4A);">
-            👉 Book Free Trial
+            <span class="japanese">👉 無料体験を予約</span>
+            <span class="english">👉 Book Free Trial</span>
         </a>
     </div>
-    <script>
-        window.addEventListener('scroll', () => {
-            document.getElementById('sticky-trial').style.display = window.scrollY > 400 ? 'block' : 'none';
-        });
-    </script>
 
 <section class="hero-carousel" id="home" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url('images/shop.webp'); background-size: cover; background-position: center; position: relative;">
     <!-- Content with improved visibility -->
