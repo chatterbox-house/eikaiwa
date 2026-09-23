@@ -964,95 +964,88 @@
             margin-bottom: 1rem;
         }
         
-        /* Floating buttons */
-        .floating-contact-btn {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            background: var(--secondary);
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            z-index: 99;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            animation: pulse 2s infinite;
-        }
+                /* LINE button styles */
+                .floating-line-btn {
+                    position: fixed;
+                    bottom: 190px;
+                    left: 30px;
+                    background: #00C300;
+                    color: white;
+                    width: 60px;
+                    height: 60px;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 24px;
+                    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+                    z-index: 99;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    animation: pulse-line 2s infinite;
+                }
 
-        .floating-call-btn {
-            position: fixed;
-            bottom: 110px;
-            left: 30px;
-            background: #4CAF50;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            z-index: 99;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            animation: pulse-green 2s infinite;
-        }
+                @keyframes pulse-line {
+                    0% { box-shadow: 0 0 0 0 rgba(0, 195, 0, 0.7); }
+                    70% { box-shadow: 0 0 0 15px rgba(0, 195, 0, 0); }
+                    100% { box-shadow: 0 0 0 0 rgba(0, 195, 0, 0); }
+                }
 
-        @keyframes pulse-green {
-            0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(76, 175, 80, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
-        }
+                @keyframes pulse-green {
+                    0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7); }
+                    70% { box-shadow: 0 0 0 15px rgba(76, 175, 80, 0); }
+                    100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
+                }
 
-        .call-banner, .contact-banner {
-            display: none;
-            position: fixed;
-            background: white;
-            color: var(--dark);
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            z-index: 98;
-            white-space: nowrap;
-            line-height: 1.5;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
+                /* Banner styles */
+                .line-banner, .call-banner, .contact-banner {
+                    display: none;
+                    position: fixed;
+                    background: white;
+                    color: var(--dark);
+                    padding: 15px;
+                    border-radius: 10px;
+                    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                    z-index: 98;
+                    white-space: nowrap;
+                    line-height: 1.5;
+                    opacity: 0;
+                    transition: opacity 0.3s ease;
+                }
 
-        .call-banner.active, 
-        .contact-banner.active {
-            display: block;
-            opacity: 1;
-            animation: fadeOut 5s forwards;
-        }
+                .line-banner.active, 
+                .call-banner.active, 
+                .contact-banner.active {
+                    display: block;
+                    opacity: 1;
+                    animation: fadeOut 5s forwards;
+                }
 
-        .call-banner {
-            bottom: 110px;
-            left: 100px;
-        }
+                .line-banner {
+                    bottom: 190px;
+                    left: 100px;
+                }
 
-        .contact-banner {
-            bottom: 30px;
-            left: 100px;
-        }
+                .call-banner {
+                    bottom: 110px;
+                    left: 100px;
+                }
 
-        .call-banner:after, .contact-banner:after {
-            content: '';
-            position: absolute;
-            right: 100%;
-            top: 50%;
-            margin-top: -10px;
-            border-width: 10px;
-            border-style: solid;
-            border-color: transparent white transparent transparent;
-        }
+                .contact-banner {
+                    bottom: 30px;
+                    left: 100px;
+                }
+
+                .line-banner:after, .call-banner:after, .contact-banner:after {
+                    content: '';
+                    position: absolute;
+                    right: 100%;
+                    top: 50%;
+                    margin-top: -10px;
+                    border-width: 10px;
+                    border-style: solid;
+                    border-color: transparent white transparent transparent;
+                }
 
         @keyframes fadeOut {
             0% { opacity: 1; }
@@ -1337,6 +1330,12 @@
         <a href="tel:08098163546" style="color: white; text-decoration: none;">📞</a>
         <div class="call-banner japanese">日本語でお問い合わせ<br>080-9816-3546<br>火～土 13:00-20:00</div>
         <div class="call-banner english">Call us in Japanese<br>080-9816-3546<br>Tue-Sat 1pm-8pm</div>
+    </div>
+
+    <div class="floating-line-btn" id="floatingLineBtn">
+        <a href="https://line.me/R/ti/p/@yourlineid" style="color: white; text-decoration: none;">💬</a>
+        <div class="line-banner japanese">LINEで予約<br>友だち追加で簡単予約</div>
+        <div class="line-banner english">Reserve via LINE<br>Add as friend for easy booking</div>
     </div>
 
     <div class="floating-contact-btn" id="floatingContactBtn">
@@ -1776,7 +1775,7 @@
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3276.987055477593!2d135.6151823!3d34.747955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60011fafa59fdeab%3A0xe3662ff61f1e0595!2sChatterbox%20House!5e0!3m2!1sen!2sjp!4v1712345678901!5m2!1sen!2sjp" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                     <div class="map-container" style="margin-top: 1.5rem;">
-                        <iframe src="https://maps.app.goo.gl/QfxaQ8enuzVMgr5n9" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3277.079393!2d135.5878!3d34.7366!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000e74a0c4b1c8d%3A0x1b2a3f4c5d6e7f8a!2s2-15-1%20Sakaemachi%2C%20Kadoma%2C%20Osaka%20571-0047!5e0!3m2!1sen!2sjp!4v1712345678901!5m2!1sen!2sjp" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                     
                     <h3 class="japanese" style="margin-top: 2rem;">営業時間</h3>
@@ -2114,6 +2113,12 @@ hamburger.addEventListener('click', () => {
     floatingCallBtn.addEventListener('mouseenter', () => {
     document.querySelector('.call-banner.japanese').classList.add('active');
     document.querySelector('.call-banner.english').classList.add('active');
+}, {passive: true});
+
+const floatingLineBtn = document.getElementById('floatingLineBtn');
+floatingLineBtn.addEventListener('mouseenter', () => {
+    document.querySelector('.line-banner.japanese').classList.add('active');
+    document.querySelector('.line-banner.english').classList.add('active');
 }, {passive: true});
 
 floatingContactBtn.addEventListener('mouseenter', () => {
